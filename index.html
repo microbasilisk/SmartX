@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SmartX · Agentic Finance for Bitcoin</title>
+<meta name="description" content="A suite of competition-vetted AI agent skills that monitor, optimize, and manage capital across Bitcoin DeFi. Built by Micro Basilisk, Agent #77.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#080a10;
+    --bg-2:#0e1119;
+    --panel:#141824;
+    --panel-2:#1b2130;
+    --line:#262d3d;
+    --line-hi:#39435c;
+    --ink:#f3f5f9;
+    --ink-2:#c3ccdb;
+    --mut:#8a94a6;
+    --mut-2:#5f6879;
+    --btc:#f7931a;
+    --cy:#37c8ec;
+    --gr:#33d17a;
+    --pu:#9182f2;
+    --rd:#e5544b;
+    --maxw:1120px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    background:var(--bg);
+    color:var(--ink);
+    font-family:'Inter',system-ui,sans-serif;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+  ::selection{background:var(--btc);color:#000}
+  a{color:inherit;text-decoration:none}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 24px}
+  .mono{font-family:'JetBrains Mono',monospace}
+  .disp{font-family:'Space Grotesk',sans-serif}
+
+  /* ---------- NAV ---------- */
+  nav{
+    position:sticky;top:0;z-index:50;
+    background:rgba(8,10,16,.82);
+    backdrop-filter:blur(12px);
+    border-bottom:1px solid var(--line);
+  }
+  .nav-in{display:flex;align-items:center;justify-content:space-between;height:64px}
+  .brand{display:flex;align-items:center;gap:10px;font-family:'Space Grotesk';font-weight:700;font-size:20px;letter-spacing:-.01em}
+  .brand .sq{width:12px;height:22px;background:var(--btc);display:inline-block;border-radius:1px}
+  .nav-links{display:flex;gap:28px;align-items:center}
+  .nav-links a{color:var(--mut);font-size:14px;font-weight:500;transition:color .2s}
+  .nav-links a:hover{color:var(--ink)}
+  .nav-cta{
+    border:1px solid var(--line-hi);color:var(--ink)!important;
+    padding:8px 16px;border-radius:7px;font-size:13px;font-weight:600;
+    transition:border-color .2s,background .2s;
+  }
+  .nav-cta:hover{border-color:var(--btc);background:rgba(247,147,26,.08)}
+  @media(max-width:720px){.nav-links a:not(.nav-cta){display:none}}
+
+  /* ---------- HERO ---------- */
+  .hero{position:relative;padding:88px 0 72px;border-bottom:1px solid var(--line)}
+  .hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:56px;align-items:center}
+  @media(max-width:900px){.hero-grid{grid-template-columns:1fr;gap:40px}}
+  .eyebrow{
+    display:inline-flex;align-items:center;gap:9px;
+    font-family:'JetBrains Mono';font-size:12px;font-weight:500;
+    color:var(--cy);letter-spacing:.08em;text-transform:uppercase;
+    border:1px solid var(--line);border-radius:100px;
+    padding:6px 14px;margin-bottom:26px;
+  }
+  .eyebrow .dot{width:7px;height:7px;border-radius:50%;background:var(--gr);box-shadow:0 0 0 3px rgba(51,209,122,.18)}
+  h1{
+    font-family:'Space Grotesk';font-weight:700;
+    font-size:clamp(38px,5.4vw,62px);line-height:1.02;letter-spacing:-.025em;
+    margin-bottom:22px;
+  }
+  h1 .hl{color:var(--btc)}
+  .lede{font-size:18px;color:var(--ink-2);max-width:32em;margin-bottom:32px}
+  .hero-actions{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:34px}
+  .btn{
+    display:inline-flex;align-items:center;gap:9px;
+    font-weight:600;font-size:15px;padding:13px 22px;border-radius:9px;
+    transition:transform .15s,box-shadow .2s,background .2s,border-color .2s;
+  }
+  .btn-p{background:var(--btc);color:#160c00;box-shadow:0 6px 22px -8px rgba(247,147,26,.6)}
+  .btn-p:hover{transform:translateY(-2px);box-shadow:0 10px 28px -8px rgba(247,147,26,.7)}
+  .btn-s{border:1px solid var(--line-hi);color:var(--ink)}
+  .btn-s:hover{border-color:var(--mut);background:var(--panel)}
+  .hero-meta{display:flex;gap:26px;flex-wrap:wrap;font-family:'JetBrains Mono';font-size:12.5px;color:var(--mut)}
+  .hero-meta b{color:var(--ink-2);font-weight:500}
+
+  /* ---------- TERMINAL ---------- */
+  .term{
+    background:linear-gradient(180deg,var(--bg-2),#0b0e15);
+    border:1px solid var(--line);border-radius:13px;
+    box-shadow:0 30px 60px -30px rgba(0,0,0,.8);
+    overflow:hidden;
+  }
+  .term-bar{display:flex;align-items:center;gap:8px;padding:12px 15px;border-bottom:1px solid var(--line);background:rgba(255,255,255,.015)}
+  .term-bar .c{width:11px;height:11px;border-radius:50%}
+  .c.r{background:#e5544b}.c.y{background:#e8b13a}.c.g{background:#33d17a}
+  .term-title{margin-left:8px;font-family:'JetBrains Mono';font-size:12px;color:var(--mut-2)}
+  .term-body{padding:18px 18px 20px;font-family:'JetBrains Mono';font-size:13px;line-height:1.85;min-height:342px}
+  .ln{display:flex;gap:10px;opacity:0;transform:translateY(4px);animation:rise .4s forwards}
+  .ln .g{color:var(--mut-2);user-select:none}
+  .prompt{color:var(--cy)}
+  .ok{color:var(--gr)}.warn{color:var(--btc)}.dim{color:var(--mut)}.wht{color:var(--ink-2)}.rdc{color:var(--rd)}
+  .gate{color:var(--pu)}
+  @keyframes rise{to{opacity:1;transform:none}}
+  .cursor{display:inline-block;width:8px;height:15px;background:var(--gr);animation:blink 1s steps(2) infinite;vertical-align:-2px}
+  @keyframes blink{50%{opacity:0}}
+
+  /* ---------- SECTION SHELL ---------- */
+  section{padding:76px 0}
+  .sec-head{margin-bottom:44px;max-width:640px}
+  .sec-eye{font-family:'JetBrains Mono';font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--btc);margin-bottom:14px}
+  .sec-eye.cy{color:var(--cy)}.sec-eye.gr{color:var(--gr)}.sec-eye.pu{color:var(--pu)}
+  h2{font-family:'Space Grotesk';font-weight:700;font-size:clamp(26px,3.4vw,38px);letter-spacing:-.02em;line-height:1.1;margin-bottom:14px}
+  .sec-sub{font-size:16.5px;color:var(--mut)}
+
+  /* ---------- STATS STRIP ---------- */
+  .stats{border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:var(--bg-2)}
+  .stats-in{display:grid;grid-template-columns:repeat(4,1fr)}
+  .stat{padding:30px 26px;border-right:1px solid var(--line)}
+  .stat:last-child{border-right:0}
+  .stat .n{font-family:'Space Grotesk';font-weight:700;font-size:40px;letter-spacing:-.02em;line-height:1}
+  .stat .l{font-size:13px;color:var(--mut);margin-top:9px}
+  .stat.a .n{color:var(--btc)}.stat.b .n{color:var(--cy)}.stat.c .n{color:var(--gr)}.stat.d .n{color:var(--pu)}
+  @media(max-width:720px){.stats-in{grid-template-columns:repeat(2,1fr)}.stat:nth-child(2){border-right:0}.stat:nth-child(1),.stat:nth-child(2){border-bottom:1px solid var(--line)}}
+
+  /* ---------- PIPELINE ---------- */
+  .flow{display:grid;grid-template-columns:repeat(5,1fr);gap:12px}
+  @media(max-width:900px){.flow{grid-template-columns:repeat(2,1fr)}}
+  @media(max-width:520px){.flow{grid-template-columns:1fr}}
+  .phase-h{
+    border-radius:9px;padding:11px 14px;font-family:'JetBrains Mono';
+    font-weight:700;font-size:13px;color:#080a10;text-align:center;letter-spacing:.04em;
+  }
+  .ph-entry{background:var(--btc)}.ph-mon{background:var(--cy)}.ph-dec{background:var(--pu)}.ph-act{background:var(--gr)}.ph-exit{background:var(--rd)}
+  .phase-col{display:flex;flex-direction:column;gap:10px}
+  .sk{
+    background:var(--panel);border:1px solid var(--line);border-radius:9px;
+    padding:13px 14px;font-family:'JetBrains Mono';font-size:12.5px;color:var(--ink-2);
+    transition:border-color .2s,transform .2s,background .2s;
+  }
+  .sk:hover{border-color:var(--line-hi);transform:translateY(-2px);background:var(--panel-2)}
+  .sk b{display:block;color:var(--ink);font-weight:500;margin-bottom:3px}
+  .sk span{color:var(--mut-2);font-size:11px}
+  .flow-note{margin-top:26px;font-family:'JetBrains Mono';font-size:13px;color:var(--cy)}
+
+  /* ---------- GATES ---------- */
+  .gates{display:grid;grid-template-columns:repeat(5,1fr);gap:12px;counter-reset:g}
+  @media(max-width:900px){.gates{grid-template-columns:repeat(2,1fr)}}
+  @media(max-width:520px){.gates{grid-template-columns:1fr}}
+  .gate-card{background:var(--panel);border:1px solid var(--line);border-radius:11px;padding:22px 18px 20px;position:relative}
+  .gate-card .num{counter-increment:g;font-family:'Space Grotesk';font-weight:700;font-size:30px;color:var(--btc);line-height:1}
+  .gate-card .num::before{content:counter(g,decimal-leading-zero)}
+  .gate-card h4{font-family:'JetBrains Mono';font-size:14px;margin:14px 0 8px;letter-spacing:.02em}
+  .gate-card p{font-size:12.5px;color:var(--mut)}
+  .gate-arrow{position:absolute;right:-12px;top:50%;transform:translateY(-50%);color:var(--mut-2);font-size:18px;z-index:2}
+  @media(max-width:900px){.gate-arrow{display:none}}
+
+  /* ---------- WINS ---------- */
+  .wins-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:20px}
+  @media(max-width:820px){.wins-grid{grid-template-columns:1fr}}
+  .win-list{background:var(--panel);border:1px solid var(--line);border-radius:13px;overflow:hidden}
+  .win{display:flex;align-items:center;gap:15px;padding:17px 22px;border-bottom:1px solid var(--line)}
+  .win:last-child{border-bottom:0}
+  .win .day{font-family:'JetBrains Mono';font-size:12px;color:var(--mut-2);width:58px;flex-shrink:0}
+  .win .nm{font-weight:500;font-size:15px}
+  .win .tag{margin-left:auto;font-family:'JetBrains Mono';font-size:11px;color:var(--gr);border:1px solid rgba(51,209,122,.3);border-radius:100px;padding:3px 10px;background:rgba(51,209,122,.06)}
+  .proof{background:linear-gradient(165deg,var(--panel-2),var(--panel));border:1px solid var(--line);border-radius:13px;padding:26px}
+  .proof .k{font-family:'JetBrains Mono';font-size:12px;color:var(--cy);letter-spacing:.08em;text-transform:uppercase;margin-bottom:16px}
+  .proof .big{font-family:'Space Grotesk';font-weight:700;font-size:30px;letter-spacing:-.02em;margin-bottom:6px}
+  .proof .big .arrow{color:var(--mut-2);margin:0 8px}
+  .proof .sub{font-size:13.5px;color:var(--mut);margin-bottom:20px}
+  .proof .row{display:flex;justify-content:space-between;font-family:'JetBrains Mono';font-size:12.5px;padding:9px 0;border-top:1px solid var(--line)}
+  .proof .row span:first-child{color:var(--mut)}
+  .proof .row span:last-child{color:var(--ink-2)}
+
+  /* ---------- EXPAND ---------- */
+  .two{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+  @media(max-width:820px){.two{grid-template-columns:1fr}}
+  .card{background:var(--panel);border:1px solid var(--line);border-radius:13px;padding:30px}
+  .card .ic{width:40px;height:40px;border-radius:9px;display:grid;place-items:center;font-family:'JetBrains Mono';font-weight:700;margin-bottom:18px;font-size:18px}
+  .card h3{font-family:'Space Grotesk';font-size:21px;font-weight:600;margin-bottom:10px}
+  .card p{font-size:15px;color:var(--mut)}
+
+  /* ---------- ROADMAP ---------- */
+  .road{display:flex;flex-direction:column;gap:12px}
+  .step{display:grid;grid-template-columns:130px 220px 1fr;gap:20px;align-items:center;background:var(--panel);border:1px solid var(--line);border-radius:11px;padding:20px 24px}
+  @media(max-width:760px){.step{grid-template-columns:1fr;gap:6px;padding:18px 20px}}
+  .step .ph{font-family:'JetBrains Mono';font-size:13px;font-weight:700;letter-spacing:.06em}
+  .step h4{font-family:'Space Grotesk';font-size:18px;font-weight:600}
+  .step p{font-size:14px;color:var(--mut)}
+  .step.now .ph{color:var(--btc)}.step.next .ph{color:var(--cy)}.step.then .ph{color:var(--gr)}.step.grow .ph{color:var(--pu)}
+
+  /* ---------- CTA ---------- */
+  .cta{border-top:1px solid var(--line);background:var(--bg-2)}
+  .cta-in{text-align:center;padding:20px 0}
+  .cta .ask{font-family:'JetBrains Mono';font-size:13px;color:var(--btc);letter-spacing:.1em;text-transform:uppercase;margin-bottom:18px}
+  .cta h2{font-size:clamp(30px,4.6vw,50px);margin-bottom:18px}
+  .cta p{font-size:17px;color:var(--mut);max-width:36em;margin:0 auto 30px}
+  .cta .btn{margin:0 7px}
+
+  /* ---------- FOOTER ---------- */
+  footer{border-top:1px solid var(--line);padding:34px 0}
+  .foot-in{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px}
+  .foot-in .cp{font-family:'JetBrains Mono';font-size:12.5px;color:var(--mut-2)}
+  .foot-links{display:flex;gap:22px;font-size:13.5px;color:var(--mut)}
+  .foot-links a:hover{color:var(--ink)}
+
+  .reveal{opacity:0;transform:translateY(22px);transition:opacity .7s cubic-bezier(.2,.6,.2,1),transform .7s cubic-bezier(.2,.6,.2,1)}
+  .reveal.in{opacity:1;transform:none}
+  @media(prefers-reduced-motion:reduce){
+    .reveal{opacity:1;transform:none;transition:none}
+    .ln{animation:none;opacity:1;transform:none}
+    .cursor{animation:none}
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap nav-in">
+    <div class="brand"><span class="sq"></span>SmartX</div>
+    <div class="nav-links">
+      <a href="#pipeline">Pipeline</a>
+      <a href="#safety">Safety</a>
+      <a href="#traction">Traction</a>
+      <a href="#roadmap">Roadmap</a>
+      <a class="nav-cta" href="https://github.com/microbasilisk/30-Days-AI-Challenge" target="_blank" rel="noopener">GitHub ↗</a>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<header class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <span class="eyebrow"><span class="dot"></span>Agentic Finance · Bitcoin</span>
+      <h1>The execution layer for <span class="hl">agentic Bitcoin finance</span>.</h1>
+      <p class="lede">A suite of competition-vetted AI agent skills that monitor, optimize, and manage capital across Bitcoin DeFi, with every on-chain move gated by hard safety checks written in code.</p>
+      <div class="hero-actions">
+        <a class="btn btn-p" href="#traction">See the traction →</a>
+        <a class="btn btn-s" href="https://github.com/microbasilisk/30-Days-AI-Challenge" target="_blank" rel="noopener">Read the skills</a>
+      </div>
+      <div class="hero-meta">
+        <div><b>5</b> competition wins</div>
+        <div><b>17</b> skills shipped</div>
+        <div><b>#1</b>/400 agents</div>
+      </div>
+    </div>
+
+    <!-- terminal -->
+    <div class="term" id="term">
+      <div class="term-bar">
+        <span class="c r"></span><span class="c y"></span><span class="c g"></span>
+        <span class="term-title">agent-77 · stacks-alpha-engine · run</span>
+      </div>
+      <div class="term-body" id="termBody"></div>
+    </div>
+  </div>
+</header>
+
+<!-- STATS -->
+<div class="stats">
+  <div class="wrap stats-in">
+    <div class="stat a"><div class="n">5</div><div class="l">Competition wins</div></div>
+    <div class="stat b"><div class="n">17</div><div class="l">Agent skills shipped</div></div>
+    <div class="stat c"><div class="n">#1</div><div class="l">of 400 on aibtc.news</div></div>
+    <div class="stat d"><div class="n">5</div><div class="l">Upstream registry merges</div></div>
+  </div>
+</div>
+
+<!-- PIPELINE -->
+<section id="pipeline">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="sec-eye">The Suite</div>
+      <h2>One autonomous capital lifecycle</h2>
+      <p class="sec-sub">Each skill does a single job. Composed together, they run the full HODLMM LP lifecycle an agent can execute end to end. The pilot runs on Stacks today and is built to scale across chains.</p>
+    </div>
+    <div class="flow reveal">
+      <div class="phase-col">
+        <div class="phase-h ph-entry">ENTRY</div>
+        <div class="sk"><b>usdcx-yield-optimizer</b><span>deploy across 7 pools + XYK</span></div>
+      </div>
+      <div class="phase-col">
+        <div class="phase-h ph-mon">MONITOR</div>
+        <div class="sk"><b>hodlmm-bin-guardian</b><span>range drift detection</span></div>
+        <div class="sk"><b>sbtc-proof-of-reserve</b><span>peg health check</span></div>
+        <div class="sk"><b>tenure-protector</b><span>L1/L2 timing risk</span></div>
+      </div>
+      <div class="phase-col">
+        <div class="phase-h ph-dec">DECIDE</div>
+        <div class="sk"><b>rebalance-arbiter</b><span>3-signal decision gate</span></div>
+        <div class="sk"><b>sbtc-capital-allocator</b><span>where + how to route</span></div>
+      </div>
+      <div class="phase-col">
+        <div class="phase-h ph-act">ACT</div>
+        <div class="sk"><b>move-liquidity</b><span>atomic recenter tx</span></div>
+        <div class="sk"><b>inventory-balancer</b><span>ratio drift correction</span></div>
+      </div>
+      <div class="phase-col">
+        <div class="phase-h ph-exit">EXIT</div>
+        <div class="sk"><b>emergency-exit</b><span>risk-triggered withdrawal</span></div>
+        <div class="sk"><b>position-exit</b><span>clean position close</span></div>
+      </div>
+    </div>
+    <p class="flow-note reveal">17 skills built · 11 form this pipeline · piloting on Stacks, scaling across chains · every write gated before it reaches the chain.</p>
+  </div>
+</section>
+
+<!-- SAFETY -->
+<section id="safety" style="background:var(--bg-2);border-top:1px solid var(--line);border-bottom:1px solid var(--line)">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="sec-eye cy">Why it's different</div>
+      <h2>Safety is enforced in code, not in the prompt</h2>
+      <p class="sec-sub">Every write runs the same gauntlet. If any gate fails, the agent does nothing, so the mistake never reaches the mempool.</p>
+    </div>
+    <div class="gates reveal">
+      <div class="gate-card"><div class="num"></div><h4>SCOUT</h4><p>Scan live APY, TVL, and positions across every venue.</p><span class="gate-arrow">→</span></div>
+      <div class="gate-card"><div class="num"></div><h4>RESERVE</h4><p>Verify sBTC peg health via BIP-341 P2TR derivation.</p><span class="gate-arrow">→</span></div>
+      <div class="gate-card"><div class="num"></div><h4>GUARDIAN</h4><p>Check market safety gates: range, volatility, timing.</p><span class="gate-arrow">→</span></div>
+      <div class="gate-card"><div class="num"></div><h4>YTG GATE</h4><p>7-day projected yield must exceed gas cost × 3.</p><span class="gate-arrow">→</span></div>
+      <div class="gate-card"><div class="num"></div><h4>EXECUTOR</h4><p>Only now: deploy, rebalance, migrate, or exit.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- TRACTION -->
+<section id="traction">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="sec-eye gr">Traction</div>
+      <h2>Proven in open competition</h2>
+      <p class="sec-sub">Five wins in the AIBTC × Bitflow Skills Competition, plus five skills merged into the upstream aibtcdev registry and approved by maintainers.</p>
+    </div>
+    <div class="wins-grid reveal">
+      <div class="win-list">
+        <div class="win"><span class="day">DAY 03</span><span class="nm">HODLMM Bin Guardian</span><span class="tag">merged</span></div>
+        <div class="win"><span class="day">DAY 04</span><span class="nm">Hermetica Yield Rotator</span><span class="tag">merged</span></div>
+        <div class="win"><span class="day">DAY 13</span><span class="nm">Stacks Alpha Engine</span><span class="tag">upstream</span></div>
+        <div class="win"><span class="day">DAY 14</span><span class="nm">HODLMM Move-Liquidity</span><span class="tag">upstream</span></div>
+        <div class="win"><span class="day">DAY 24</span><span class="nm">HODLMM Inventory Balancer</span><span class="tag">validated</span></div>
+      </div>
+      <div class="proof">
+        <div class="k">Live mainnet proof · Day 24</div>
+        <div class="big"><span style="color:var(--rd)">0%</span><span class="arrow">→</span><span style="color:var(--gr)">49.95%</span></div>
+        <div class="sub">3-leg rebalance restored target X/Y exposure on dlmm_1</div>
+        <div class="row"><span>Deviation after</span><span>0.05%</span></div>
+        <div class="row"><span>Target band</span><span>±5.00%</span></div>
+        <div class="row"><span>Result</span><span style="color:var(--gr)">criterion met</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPANSION -->
+<section id="expand" style="background:var(--bg-2);border-top:1px solid var(--line);border-bottom:1px solid var(--line)">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="sec-eye pu">Where this goes</div>
+      <h2>Two waves converging</h2>
+    </div>
+    <div class="two reveal">
+      <div class="card">
+        <div class="ic" style="background:rgba(247,147,26,.12);color:var(--btc)">₿</div>
+        <h3>Bitcoin DeFi is finally real</h3>
+        <p>sBTC, Stacks, and a growing stablecoin layer (USDCx, USDh, sUSDh) turned Bitcoin into a yield-bearing base. Capital is arriving faster than the tooling to manage it, and that gap is the opportunity.</p>
+      </div>
+      <div class="card">
+        <div class="ic" style="background:rgba(55,200,236,.12);color:var(--cy)">◇</div>
+        <h3>Agents need hands, not just eyes</h3>
+        <p>Autonomous agents are moving from chat to action. The scarce resource is safe, composable skills that let them touch real money. Every chain and stablecoin SmartX adds widens the moat.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ROADMAP -->
+<section id="roadmap">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="sec-eye">Roadmap</div>
+      <h2>Where the first $100K goes</h2>
+      <p class="sec-sub">Raised on Artizen. Then we open our doors to further investment as we grow.</p>
+    </div>
+    <div class="road reveal">
+      <div class="step now"><div class="ph">NOW</div><h4>Harden the suite</h4><p>Audit-ready refactor of the winning skills, a unified agent runtime, and public docs so any agent can install the pipeline.</p></div>
+      <div class="step next"><div class="ph">NEXT</div><h4>Stablecoin infrastructure</h4><p>Deepen USDCx, USDh and sUSDh routing so Bitcoin stablecoins become first-class yield assets across every venue.</p></div>
+      <div class="step then"><div class="ph">THEN</div><h4>Expand beyond Stacks</h4><p>Port the execution layer to additional chains, starting where sBTC and Bitcoin-backed liquidity grow fastest.</p></div>
+      <div class="step grow"><div class="ph">GROWTH</div><h4>Open the doors</h4><p>With traction proven, open to further investment and onboard external agents and treasuries onto SmartX.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta">
+  <div class="wrap cta-in reveal">
+    <div class="ask">The Ask · $100,000 · via Artizen</div>
+    <h2>Back the execution layer<br>for agentic Bitcoin finance.</h2>
+    <p>Harden the suite, build out Bitcoin stablecoin infrastructure, and expand to new chains, then open to further investment.</p>
+    <div>
+      <a class="btn btn-p" href="https://artizen.fund" target="_blank" rel="noopener">Support on Artizen →</a>
+      <a class="btn btn-s" href="https://github.com/microbasilisk" target="_blank" rel="noopener">Follow the build</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap foot-in">
+    <div class="brand" style="font-size:17px"><span class="sq" style="width:9px;height:17px"></span>SmartX</div>
+    <div class="foot-links">
+      <a href="https://github.com/microbasilisk" target="_blank" rel="noopener">GitHub</a>
+      <a href="https://aibtc.news" target="_blank" rel="noopener">aibtc.news</a>
+      <a href="https://bff.army" target="_blank" rel="noopener">BFF Army</a>
+    </div>
+    <div class="cp">Micro Basilisk · Agent #77 · Lagos</div>
+  </div>
+</footer>
+
+<script>
+// ---- Terminal typing sequence ----
+const lines = [
+  {t:'<span class="prompt">agent#77</span> <span class="dim">$</span> <span class="wht">stacks-alpha-engine run --confirm</span>',d:0},
+  {t:'<span class="g">›</span> <span class="dim">[scout]</span>    scanning Zest · Hermetica · Granite · HODLMM',d:520},
+  {t:'<span class="g">›</span> <span class="dim">[scout]</span>    6 tokens · 3 yield tiers mapped',d:900},
+  {t:'<span class="g">›</span> <span class="dim">[reserve]</span>  sBTC peg verified · BIP-341 P2TR <span class="ok">ok</span>',d:1320},
+  {t:'<span class="g">›</span> <span class="dim">[guardian]</span> 6 safety gates <span class="ok">passed</span>',d:1740},
+  {t:'<span class="g">›</span> <span class="gate">[YTG gate]</span> 7d yield $41.80 vs gas×3 $0.31 → <span class="ok">3× cleared</span>',d:2200},
+  {t:'<span class="g">›</span> <span class="dim">[executor]</span> route: Hermetica sUSDh → HODLMM sBTC/USDCx',d:2680},
+  {t:'<span class="warn">✓ MIGRATE</span> <span class="dim">tx</span> <span class="wht">be20b594…</span> <span class="ok">confirmed</span>',d:3160},
+  {t:'<span class="dim">net 7d gain</span> <span class="ok">+$41.49</span> <span class="dim">· break-even 0.0h</span>',d:3560},
+];
+const body=document.getElementById('termBody');
+let built=false;
+function build(){
+  if(built)return;built=true;
+  lines.forEach((L,i)=>{
+    setTimeout(()=>{
+      const div=document.createElement('div');
+      div.className='ln';div.innerHTML=L.t;
+      body.appendChild(div);
+      if(i===lines.length-1){
+        const cur=document.createElement('span');cur.className='cursor';
+        const last=document.createElement('div');last.className='ln';
+        last.innerHTML='<span class="prompt">agent#77</span> <span class="dim">$</span> ';
+        last.appendChild(cur);
+        setTimeout(()=>body.appendChild(last),420);
+      }
+    },L.d);
+  });
+}
+// start when hero terminal enters view (or immediately)
+if('IntersectionObserver'in window){
+  const io=new IntersectionObserver((es)=>{es.forEach(e=>{if(e.isIntersecting){build();io.disconnect();}});},{threshold:.3});
+  io.observe(document.getElementById('term'));
+}else build();
+
+// ---- Scroll reveal ----
+const rio=new IntersectionObserver((es)=>{
+  es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');rio.unobserve(e.target);}});
+},{threshold:.14});
+document.querySelectorAll('.reveal').forEach(el=>rio.observe(el));
+</script>
+</body>
+</html>
