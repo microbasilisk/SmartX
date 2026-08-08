@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>SmartX · Agentic Finance for Bitcoin</title>
-<meta name="description" content="A suite of competition-vetted AI agent skills that monitor, optimize, and manage capital across Bitcoin DeFi. Built by Micro Basilisk, Agent #77.">
+<meta name="description" content="Non-custodial agentic finance for Bitcoin. Task an AI agent with your capital across Bitcoin DeFi, and sign every move in your own wallet. SmartX never holds your keys. Built by Micro Basilisk, Agent #77, for Let Africa Build.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
@@ -156,7 +156,8 @@
   .flow-note{margin-top:26px;font-family:'JetBrains Mono';font-size:13px;color:var(--cy)}
 
   /* ---------- GATES ---------- */
-  .gates{display:grid;grid-template-columns:repeat(5,1fr);gap:12px;counter-reset:g}
+  .gates{display:grid;grid-template-columns:repeat(6,1fr);gap:12px;counter-reset:g}
+  @media(max-width:1040px){.gates{grid-template-columns:repeat(3,1fr)}}
   @media(max-width:900px){.gates{grid-template-columns:repeat(2,1fr)}}
   @media(max-width:520px){.gates{grid-template-columns:1fr}}
   .gate-card{background:var(--panel);border:1px solid var(--line);border-radius:11px;padding:22px 18px 20px;position:relative}
@@ -233,10 +234,11 @@
     <div class="brand"><span class="sq"></span>SmartX</div>
     <div class="nav-links">
       <a href="#pipeline">Pipeline</a>
+      <a href="console.html">Console</a>
       <a href="#safety">Safety</a>
       <a href="#traction">Traction</a>
       <a href="#roadmap">Roadmap</a>
-      <a class="nav-cta" href="https://github.com/microbasilisk/SmartX_Agentic_Suite" target="_blank" rel="noopener">GitHub ↗</a>
+      <a class="nav-cta" href="https://github.com/microbasilisk/smartx-agentic-suite" target="_blank" rel="noopener">GitHub ↗</a>
     </div>
   </div>
 </nav>
@@ -246,16 +248,16 @@
   <div class="wrap hero-grid">
     <div>
       <span class="eyebrow"><span class="dot"></span>Agentic Finance · Bitcoin</span>
-      <h1>The execution layer for <span class="hl">agentic Bitcoin finance</span>.</h1>
-      <p class="lede">A suite of competition-vetted AI agent skills that monitor, optimize, and manage capital across Bitcoin DeFi, with every on-chain move gated by hard safety checks written in code.</p>
+      <h1>Agentic Bitcoin finance, <span class="hl">without giving up your keys</span>.</h1>
+      <p class="lede">You tell an AI agent what you want done with your capital. It picks the right skill, runs it against your positions, and puts the result through safety gates written in code. Then it hands you a transaction to sign in your own wallet. SmartX never holds your keys or your funds.</p>
       <div class="hero-actions">
-        <a class="btn btn-p" href="#traction">See the traction →</a>
-        <a class="btn btn-s" href="https://github.com/microbasilisk/SmartX_Agentic_Suite" target="_blank" rel="noopener">Read the skills</a>
+        <a class="btn btn-p" href="console.html">Try the console →</a>
+        <a class="btn btn-s" href="https://github.com/microbasilisk/smartx-agentic-suite" target="_blank" rel="noopener">Read the skills</a>
       </div>
       <div class="hero-meta">
-        <div><b>5</b> competition wins</div>
-        <div><b>17</b> skills shipped</div>
-        <div><b>#1</b>/400 agents</div>
+        <div><b>16</b> skills built</div>
+        <div><b>5</b> merged upstream</div>
+        <div><b>0</b> keys held</div>
       </div>
     </div>
 
@@ -273,10 +275,10 @@
 <!-- STATS -->
 <div class="stats">
   <div class="wrap stats-in">
-    <div class="stat a"><div class="n">5</div><div class="l">Competition wins</div></div>
-    <div class="stat b"><div class="n">17</div><div class="l">Agent skills shipped</div></div>
-    <div class="stat c"><div class="n">#1</div><div class="l">of 400 on aibtc.news</div></div>
-    <div class="stat d"><div class="n">5</div><div class="l">Upstream registry merges</div></div>
+    <div class="stat a"><div class="n">16</div><div class="l">Skills built and shipped</div></div>
+    <div class="stat b"><div class="n">5</div><div class="l">Merged into the AIBTC registry</div></div>
+    <div class="stat c"><div class="n">107</div><div class="l">Registry skills reachable</div></div>
+    <div class="stat d"><div class="n">100%</div><div class="l">Non-custodial by design</div></div>
   </div>
 </div>
 
@@ -285,8 +287,8 @@
   <div class="wrap">
     <div class="sec-head reveal">
       <div class="sec-eye">The Suite</div>
-      <h2>One autonomous capital lifecycle</h2>
-      <p class="sec-sub">Each skill does a single job. Composed together, they run the full HODLMM LP lifecycle an agent can execute end to end. The pilot runs on Stacks today and is built to scale across chains.</p>
+      <h2>One capital lifecycle, end to end</h2>
+      <p class="sec-sub">Each skill does a single job. Composed together, they cover the full liquidity lifecycle, from deciding where capital goes to pulling it out when risk signals converge. The pilot runs on Stacks today and is built to scale across chains.</p>
     </div>
     <div class="flow reveal">
       <div class="phase-col">
@@ -297,15 +299,16 @@
         <div class="phase-h ph-mon">MONITOR</div>
         <div class="sk"><b>hodlmm-bin-guardian</b><span>range drift detection</span></div>
         <div class="sk"><b>sbtc-proof-of-reserve</b><span>peg health check</span></div>
-        <div class="sk"><b>tenure-protector</b><span>L1/L2 timing risk</span></div>
+        <div class="sk"><b>zbg-yield-scout</b><span>cross-protocol position scan</span></div>
       </div>
       <div class="phase-col">
         <div class="phase-h ph-dec">DECIDE</div>
-        <div class="sk"><b>rebalance-arbiter</b><span>3-signal decision gate</span></div>
-        <div class="sk"><b>sbtc-capital-allocator</b><span>where + how to route</span></div>
+        <div class="sk"><b>rebalance-arbiter</b><span>2-signal decision gate</span></div>
+        <div class="sk"><b>sbtc-capital-allocator</b><span>where and how to route</span></div>
       </div>
       <div class="phase-col">
         <div class="phase-h ph-act">ACT</div>
+        <div class="sk"><b>stacks-alpha-engine</b><span>4-protocol yield executor</span></div>
         <div class="sk"><b>move-liquidity</b><span>atomic recenter tx</span></div>
         <div class="sk"><b>inventory-balancer</b><span>ratio drift correction</span></div>
       </div>
@@ -315,7 +318,7 @@
         <div class="sk"><b>position-exit</b><span>clean position close</span></div>
       </div>
     </div>
-    <p class="flow-note reveal">17 skills built · 11 form this pipeline · piloting on Stacks, scaling across chains · every write gated before it reaches the chain.</p>
+    <p class="flow-note reveal">16 skills built · 11 form this pipeline · piloting on Stacks, scaling across chains · every write gated before it reaches your wallet for signing.</p>
   </div>
 </section>
 
@@ -325,15 +328,17 @@
     <div class="sec-head reveal">
       <div class="sec-eye cy">Why it's different</div>
       <h2>Safety is enforced in code, not in the prompt</h2>
-      <p class="sec-sub">Every write runs the same gauntlet. If any gate fails, the agent does nothing, so the mistake never reaches the mempool.</p>
+      <p class="sec-sub">Every action runs the same gauntlet. If any gate fails, no transaction is built and none is offered to you, so the mistake never reaches your wallet or the mempool.</p>
     </div>
     <div class="gates reveal">
-      <div class="gate-card"><div class="num"></div><h4>SCOUT</h4><p>Scan live APY, TVL, and positions across every venue.</p><span class="gate-arrow">→</span></div>
+      <div class="gate-card"><div class="num"></div><h4>SCOUT</h4><p>Scan live APY, TVL and your positions across every venue.</p><span class="gate-arrow">→</span></div>
       <div class="gate-card"><div class="num"></div><h4>RESERVE</h4><p>Verify sBTC peg health via BIP-341 P2TR derivation.</p><span class="gate-arrow">→</span></div>
       <div class="gate-card"><div class="num"></div><h4>GUARDIAN</h4><p>Check market safety gates: range, volatility, timing.</p><span class="gate-arrow">→</span></div>
-      <div class="gate-card"><div class="num"></div><h4>YTG GATE</h4><p>7-day projected yield must exceed gas cost × 3.</p><span class="gate-arrow">→</span></div>
-      <div class="gate-card"><div class="num"></div><h4>EXECUTOR</h4><p>Only now: deploy, rebalance, migrate, or exit.</p></div>
+      <div class="gate-card"><div class="num"></div><h4>YTG GATE</h4><p>7-day projected yield must exceed gas cost times three.</p><span class="gate-arrow">→</span></div>
+      <div class="gate-card"><div class="num"></div><h4>POST-CONDITIONS</h4><p>Bind what the transaction may move. The chain rejects the rest.</p><span class="gate-arrow">→</span></div>
+      <div class="gate-card"><div class="num"></div><h4>YOU SIGN</h4><p>An unsigned transaction goes to your wallet. Nothing moves until you approve.</p></div>
     </div>
+    <p class="flow-note reveal" style="margin-top:28px">The gauntlet is not decoration. Ask the console to deploy $200 and watch the YTG gate refuse: at that size a week of yield is worth less than the gas to capture it, so no transaction is offered at all. <a href="console.html" style="color:var(--cy)">See it happen →</a></p>
   </div>
 </section>
 
@@ -342,24 +347,25 @@
   <div class="wrap">
     <div class="sec-head reveal">
       <div class="sec-eye gr">Traction</div>
-      <h2>Proven in open competition</h2>
-      <p class="sec-sub">Five wins in the AIBTC × Bitflow Skills Competition, plus five skills merged into the upstream aibtcdev registry and approved by maintainers.</p>
+      <h2>Reviewed by maintainers, proven on mainnet</h2>
+      <p class="sec-sub">Five skills merged into the upstream aibtcdev registry after public review. Every claim below resolves to a pull request you can read or a transaction you can look up.</p>
     </div>
     <div class="wins-grid reveal">
       <div class="win-list">
-        <div class="win"><span class="day">DAY 03</span><span class="nm">HODLMM Bin Guardian</span><span class="tag">upstream</span></div>
-        <div class="win"><span class="day">DAY 04</span><span class="nm">Hermetica Yield Rotator</span><span class="tag">upstream</span></div>
-        <div class="win"><span class="day">DAY 13</span><span class="nm">Stacks Alpha Engine</span><span class="tag">upstream</span></div>
-        <div class="win"><span class="day">DAY 14</span><span class="nm">HODLMM Move-Liquidity</span><span class="tag">upstream</span></div>
-        <div class="win"><span class="day">DAY 24</span><span class="nm">HODLMM Inventory Balancer</span><span class="tag">validated</span></div>
+        <div class="win"><span class="day">MERGED</span><span class="nm">HODLMM Bin Guardian</span><span class="tag">registry</span></div>
+        <div class="win"><span class="day">MERGED</span><span class="nm">Hermetica Yield Rotator</span><span class="tag">registry</span></div>
+        <div class="win"><span class="day">MERGED</span><span class="nm">Stacks Alpha Engine</span><span class="tag">registry</span></div>
+        <div class="win"><span class="day">MERGED</span><span class="nm">HODLMM Move-Liquidity</span><span class="tag">registry</span></div>
+        <div class="win"><span class="day">MERGED</span><span class="nm">HODLMM Inventory Balancer</span><span class="tag">validated</span></div>
       </div>
       <div class="proof">
-        <div class="k">Live mainnet proof · Day 24</div>
-        <div class="big"><span style="color:var(--rd)">0%</span><span class="arrow">→</span><span style="color:var(--gr)">49.95%</span></div>
-        <div class="sub">3-leg rebalance restored target X/Y exposure on dlmm_1</div>
-        <div class="row"><span>Deviation after</span><span>0.05%</span></div>
-        <div class="row"><span>Target band</span><span>±5.00%</span></div>
-        <div class="row"><span>Result</span><span style="color:var(--gr)">criterion met</span></div>
+        <div class="k">Verified mainnet transaction</div>
+        <div class="big" style="font-size:26px"><span style="color:var(--gr)">position exit</span></div>
+        <div class="sub">hodlmm-position-exit called withdraw-liquidity-same-multi and returned a live position to the wallet</div>
+        <div class="row"><span>Status</span><span style="color:var(--gr)">success</span></div>
+        <div class="row"><span>Block</span><span>7,663,125</span></div>
+        <div class="row"><span>Date</span><span>2026-04-19</span></div>
+        <div class="row"><span>Transaction</span><span><a href="https://explorer.hiro.so/txid/0xbe20b59464b94286cd6478483fcdf41b2eec21b2c496ed821aa004fd632e9811?chain=mainnet" target="_blank" rel="noopener" style="color:var(--cy)">be20b594… ↗</a></span></div>
       </div>
     </div>
   </div>
@@ -408,8 +414,8 @@
 <section class="cta">
   <div class="wrap cta-in reveal">
     <div class="ask">The Ask · $100,000 · via Artizen</div>
-    <h2>Back the execution layer<br>for agentic Bitcoin finance.</h2>
-    <p>Harden the suite, build out Bitcoin stablecoin infrastructure, and expand to new chains, then open to further investment.</p>
+    <h2>Back non-custodial<br>agentic finance for Bitcoin.</h2>
+    <p>Harden the skill suite, ship the non-custodial console, build out Bitcoin stablecoin infrastructure, and expand to new chains. Then open to further investment.</p>
     <div>
       <a class="btn btn-p" href="https://artizen.fund/index/p/smart-yield-migrator?season=7" target="_blank" rel="noopener">Support on Artizen →</a>
       <a class="btn btn-s" href="https://x.com/OfficialSmartX" target="_blank" rel="noopener">Follow the build</a>
@@ -422,8 +428,8 @@
     <div class="brand" style="font-size:17px"><span class="sq" style="width:9px;height:17px"></span>SmartX</div>
     <div class="foot-links">
       <a href="https://github.com/microbasilisk" target="_blank" rel="noopener">GitHub</a>
-      <a href="https://aibtc.news" target="_blank" rel="noopener">aibtc.news</a>
-      <a href="https://bff.army" target="_blank" rel="noopener">BFF Army</a>
+      <a href="https://github.com/aibtcdev/skills" target="_blank" rel="noopener">AIBTC registry</a>
+      <a href="console.html">Console preview</a>
     </div>
     <div class="cp">Micro Basilisk · Agent #77 · Lagos</div>
   </div>
@@ -432,15 +438,16 @@
 <script>
 // ---- Terminal typing sequence ----
 const lines = [
-  {t:'<span class="prompt">agent#77</span> <span class="dim">$</span> <span class="wht">stacks-alpha-engine run --confirm</span>',d:0},
-  {t:'<span class="g">›</span> <span class="dim">[scout]</span>    scanning Zest · Hermetica · Granite · HODLMM',d:520},
-  {t:'<span class="g">›</span> <span class="dim">[scout]</span>    6 tokens · 3 yield tiers mapped',d:900},
+  {t:'<span class="prompt">you</span> <span class="dim">$</span> <span class="wht">route my idle sBTC to the best yield</span>',d:0},
+  {t:'<span class="g">›</span> <span class="dim">[select]</span>   stacks-alpha-engine · fetched from registry',d:520},
+  {t:'<span class="g">›</span> <span class="dim">[scout]</span>    scanning Zest · Hermetica · Granite · HODLMM',d:900},
   {t:'<span class="g">›</span> <span class="dim">[reserve]</span>  sBTC peg verified · BIP-341 P2TR <span class="ok">ok</span>',d:1320},
-  {t:'<span class="g">›</span> <span class="dim">[guardian]</span> 6 safety gates <span class="ok">passed</span>',d:1740},
+  {t:'<span class="g">›</span> <span class="dim">[guardian]</span> range · volatility · timing <span class="ok">passed</span>',d:1740},
   {t:'<span class="g">›</span> <span class="gate">[YTG gate]</span> 7d yield $41.80 vs gas×3 $0.31 → <span class="ok">3× cleared</span>',d:2200},
-  {t:'<span class="g">›</span> <span class="dim">[executor]</span> route: Hermetica sUSDh → HODLMM sBTC/USDCx',d:2680},
-  {t:'<span class="warn">✓ MIGRATE</span> <span class="dim">tx</span> <span class="wht">be20b594…</span> <span class="ok">confirmed</span>',d:3160},
-  {t:'<span class="dim">net 7d gain</span> <span class="ok">+$41.49</span> <span class="dim">· break-even 0.0h</span>',d:3560},
+  {t:'<span class="g">›</span> <span class="dim">[post-cond]</span> bounds pinned · max 1.00 sBTC out, nothing else',d:2640},
+  {t:'<span class="g">›</span> <span class="dim">[executor]</span> <span class="wht">unsigned</span> tx built for <span class="wht">your</span> address',d:3080},
+  {t:'<span class="warn">→ awaiting your signature</span> <span class="dim">· Leather wallet</span>',d:3520},
+  {t:'<span class="dim">projected net 7d</span> <span class="ok">+$41.49</span> <span class="dim">· your keys never left your wallet</span>',d:3920},
 ];
 const body=document.getElementById('termBody');
 let built=false;
