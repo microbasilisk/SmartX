@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>SmartX wallet demo</title>
+<style>
+  :root { color-scheme: light dark; --bg:#fff; --fg:#111; --mut:#666; --line:#e3e3e3; --ok:#0a7c3e; --bad:#b3261e; --card:#fafafa; }
+  @media (prefers-color-scheme: dark){ :root{ --bg:#111; --fg:#eee; --mut:#999; --line:#2a2a2a; --ok:#4ade80; --bad:#f87171; --card:#1a1a1a; } }
+  * { box-sizing:border-box; }
+  body { margin:0; padding:2rem 1rem; background:var(--bg); color:var(--fg);
+         font:15px/1.6 ui-sans-serif,system-ui,-apple-system,sans-serif; }
+  main { max-width:44rem; margin:0 auto; }
+  h1 { font-size:1.4rem; margin:0 0 .25rem; }
+  p.sub { color:var(--mut); margin:0 0 1.5rem; }
+  .card { border:1px solid var(--line); border-radius:10px; padding:1rem; margin-bottom:1rem; background:var(--card); }
+  button { font:inherit; padding:.55rem 1rem; border-radius:8px; border:1px solid var(--line);
+           background:var(--bg); color:var(--fg); cursor:pointer; margin:.25rem .25rem .25rem 0; }
+  button:hover { border-color:var(--mut); }
+  .hidden { display:none; }
+  code { font-family:ui-monospace,SFMono-Regular,Menlo,monospace; font-size:.85em; word-break:break-all; }
+  #log { margin-top:1rem; }
+  .line { padding:.5rem .7rem; border-left:3px solid var(--line); margin-bottom:.4rem; font-size:.9rem; }
+  .line.ok { border-color:var(--ok); }
+  .line.bad { border-color:var(--bad); }
+  a { color:inherit; }
+  dl { display:grid; grid-template-columns:auto 1fr; gap:.3rem 1rem; margin:0; }
+  dt { color:var(--mut); }
+</style>
+</head>
+<body>
+<main>
+  <h1>SmartX wallet demo</h1>
+  <p class="sub">Testnet. SmartX prepares a transaction it cannot send. Your wallet signs it.</p>
+
+  <div class="card" id="choose">
+    <p style="margin-top:0">Connect a wallet. Switch the extension to <strong>testnet</strong> first.</p>
+    <button id="btn-xverse">Connect Xverse</button>
+    <button id="btn-leather">Connect Leather</button>
+  </div>
+
+  <div class="card hidden" id="connected">
+    <dl>
+      <dt>Wallet</dt><dd id="wallet"></dd>
+      <dt>Address</dt><dd><code id="addr"></code></dd>
+      <dt>Demo tokens</dt><dd id="balance">0</dd>
+    </dl>
+    <p style="margin-bottom:.3rem"><strong>1.</strong> Get tokens so there is something to move.</p>
+    <button id="btn-claim">Claim demo tokens</button>
+    <p style="margin-bottom:.3rem"><strong>2.</strong> Send within the cap. This should succeed.</p>
+    <button id="btn-good">Send 1000, capped at 1000</button>
+    <p style="margin-bottom:.3rem"><strong>3.</strong> Send more than the cap allows. The chain must refuse it, even though you approved.</p>
+    <button id="btn-bad">Send 1000, capped at 500</button>
+    <p style="margin:1rem 0 .3rem"><button id="btn-disconnect">Disconnect</button></p>
+  </div>
+
+  <div id="log"></div>
+</main>
+<script type="module" src="./app.js"></script>
+</body>
+</html>
