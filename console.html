@@ -179,6 +179,61 @@
   .cm-opt .arr{margin-left:auto;color:var(--mut-2)}
   .cm-note{font-family:'JetBrains Mono';font-size:10.5px;color:var(--mut-2);text-align:center;margin-top:8px;line-height:1.5}
 
+
+  /* ---- views ---- */
+  .view{display:none;flex:1;min-height:0;flex-direction:column}
+  .view.on{display:flex}
+  .pane{flex:1;overflow-y:auto;padding:26px 24px 40px}
+  .pane-in{max-width:860px;margin:0 auto}
+
+  /* ---- profile ---- */
+  .prof{display:flex;align-items:center;gap:16px;background:var(--panel);border:1px solid var(--line);border-radius:13px;padding:18px 20px;margin-bottom:20px;flex-wrap:wrap}
+  .prof .pav{width:52px;height:52px;border-radius:13px;background:linear-gradient(135deg,var(--cy),var(--gr));display:grid;place-items:center;font-family:'JetBrains Mono';font-weight:700;font-size:15px;color:#0a0d14;flex-shrink:0}
+  .prof .pn{font-family:'Space Grotesk';font-size:19px;font-weight:600;display:flex;align-items:center;gap:9px;flex-wrap:wrap}
+  .bns-tag{font-family:'JetBrains Mono';font-size:10.5px;color:var(--btc);border:1px solid rgba(247,147,26,.3);background:rgba(247,147,26,.07);border-radius:20px;padding:3px 9px}
+  .prof .pa{font-family:'JetBrains Mono';font-size:11.5px;color:var(--mut);margin-top:3px}
+  .prof .ptot{margin-left:auto;text-align:right}
+  .prof .ptot .n{font-family:'Space Grotesk';font-size:26px;font-weight:700;letter-spacing:-.02em}
+  .prof .ptot .l{font-family:'JetBrains Mono';font-size:10.5px;color:var(--mut);margin-top:2px}
+  @media(max-width:640px){.prof .ptot{margin-left:0;text-align:left;width:100%;border-top:1px solid var(--line);padding-top:12px}}
+
+  .sec-t{font-family:'JetBrains Mono';font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--mut-2);margin:24px 0 11px}
+
+  /* ---- asset rows ---- */
+  .asset{display:flex;align-items:center;gap:14px;background:var(--panel);border:1px solid var(--line);border-radius:11px;padding:14px 16px;margin-bottom:9px}
+  .asset .aic{width:34px;height:34px;border-radius:9px;display:grid;place-items:center;font-family:'JetBrains Mono';font-weight:700;font-size:11px;flex-shrink:0}
+  .asset .anm{font-weight:600;font-size:13.5px}
+  .asset .asub{font-family:'JetBrains Mono';font-size:11px;color:var(--mut);margin-top:2px}
+  .asset .aright{margin-left:auto;text-align:right;flex-shrink:0}
+  .asset .aval{font-family:'JetBrains Mono';font-size:13.5px}
+  .asset .aapy{font-family:'JetBrains Mono';font-size:11px;color:var(--gr);margin-top:2px}
+  .asset .aapy.idle{color:var(--ye)}
+
+  .nudge{border:1px solid rgba(56,198,236,.25);background:rgba(56,198,236,.05);border-radius:11px;padding:14px 16px;margin-top:12px;display:flex;gap:13px;align-items:flex-start}
+  .nudge .nic{font-size:16px;flex-shrink:0}
+  .nudge .nt{font-size:13px;color:var(--ink-2);line-height:1.55}
+  .nudge b{color:var(--ink)}
+  .nudge-act{margin-top:9px;display:inline-flex;background:rgba(56,198,236,.12);color:var(--cy);border:1px solid rgba(56,198,236,.3);border-radius:7px;padding:7px 13px;font-size:12.5px;font-weight:600}
+  .nudge-act:hover{background:rgba(56,198,236,.2)}
+
+  /* ---- activity ---- */
+  .act-row{display:flex;align-items:flex-start;gap:13px;background:var(--panel);border:1px solid var(--line);border-radius:11px;padding:13px 16px;margin-bottom:9px}
+  .act-row .adot{width:9px;height:9px;border-radius:50%;flex-shrink:0;margin-top:6px}
+  .act-row .aq{font-size:13.5px;color:var(--ink-2)}
+  .act-row .am{font-family:'JetBrains Mono';font-size:11px;color:var(--mut);margin-top:4px;display:flex;gap:10px;flex-wrap:wrap}
+  .act-row .st{font-family:'JetBrains Mono';font-size:10px;border-radius:20px;padding:3px 9px;margin-left:auto;flex-shrink:0;white-space:nowrap}
+  .st.signed{color:var(--gr);border:1px solid rgba(50,209,120,.3);background:rgba(50,209,120,.07)}
+  .st.blocked{color:var(--rd);border:1px solid rgba(229,84,75,.3);background:rgba(229,84,75,.07)}
+  .st.readonly{color:var(--cy);border:1px solid rgba(56,198,236,.3);background:rgba(56,198,236,.07)}
+  .st.pending{color:var(--ye);border:1px solid rgba(232,184,58,.3);background:rgba(232,184,58,.07)}
+  .empty{text-align:center;padding:60px 20px;color:var(--mut)}
+  .empty .eic{font-size:30px;margin-bottom:12px;opacity:.5}
+
+  .fee-note{border:1px solid var(--line);background:var(--panel);border-radius:11px;padding:15px 17px;margin-top:22px}
+  .fee-note .fh{font-family:'JetBrains Mono';font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--gr);margin-bottom:8px}
+  .fee-note p{font-size:12.5px;color:var(--mut);line-height:1.6}
+  .fee-note b{color:var(--ink-2)}
+
   .toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%) translateY(20px);z-index:300;background:var(--panel-3);border:1px solid var(--line-hi);border-radius:11px;padding:13px 18px;display:flex;align-items:center;gap:12px;opacity:0;transition:.25s;max-width:90vw}
   .toast.show{opacity:1;transform:translateX(-50%)}
   .toast .ic{width:20px;height:20px;border-radius:50%;background:rgba(50,209,120,.15);color:var(--gr);display:grid;place-items:center;font-size:12px;font-weight:700;flex-shrink:0}
@@ -195,9 +250,9 @@
   <aside class="rail">
     <div class="brand"><span class="sq"></span><span>SmartX</span></div>
     <div class="rail-lbl">Console</div>
-    <button class="nav-item on"><svg class="ic" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M12 5V3M12 21v-2M5 12H3M21 12h-2M7 7 5.5 5.5M17 17l1.5 1.5M17 7l1.5-1.5M7 17l-1.5 1.5"/></svg><span>Agent</span></button>
-    <button class="nav-item"><svg class="ic" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 10h18"/></svg><span>Positions</span></button>
-    <button class="nav-item"><svg class="ic" viewBox="0 0 24 24"><path d="M3 12h4l3 8 4-16 3 8h4"/></svg><span>Activity</span></button>
+    <button class="nav-item on" id="nav-agent" onclick="showView('agent')"><svg class="ic" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M12 5V3M12 21v-2M5 12H3M21 12h-2M7 7 5.5 5.5M17 17l1.5 1.5M17 7l1.5-1.5M7 17l-1.5 1.5"/></svg><span>Agent</span></button>
+    <button class="nav-item" id="nav-positions" onclick="showView('positions')"><svg class="ic" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 10h18"/></svg><span>Positions</span></button>
+    <button class="nav-item" id="nav-activity" onclick="showView('activity')"><svg class="ic" viewBox="0 0 24 24"><path d="M3 12h4l3 8 4-16 3 8h4"/></svg><span>Activity</span></button>
 
     <div class="agent-card">
       <div class="ah">
@@ -236,6 +291,7 @@
       </div>
     </div>
 
+    <div class="view on" id="view-agent">
     <div class="convo" id="convo">
       <div class="thread" id="thread">
         <div class="greet" id="greet">
@@ -259,8 +315,19 @@
           <input id="input" placeholder="Task Micro Basilisk, for example: move my idle USDCx into the best yield" onkeydown="if(event.key==='Enter')submitTask()">
           <button class="send" id="sendBtn" onclick="submitTask()"><svg viewBox="0 0 24 24"><path d="M4 12h15m0 0-6-6m6 6-6 6"/></svg></button>
         </div>
-        <div class="composer-note">Micro Basilisk proposes. The gates decide. You sign. SmartX never holds your keys.</div>
+        <div class="composer-note">Free to ask. You pay only when you sign. Micro Basilisk proposes, the gates decide, you sign. SmartX never holds your keys.</div>
       </div>
+    </div>
+    </div>
+
+    <!-- POSITIONS -->
+    <div class="view" id="view-positions">
+      <div class="pane"><div class="pane-in" id="positionsBody"></div></div>
+    </div>
+
+    <!-- ACTIVITY -->
+    <div class="view" id="view-activity">
+      <div class="pane"><div class="pane-in" id="activityBody"></div></div>
     </div>
   </div>
 </div>
@@ -363,6 +430,7 @@ function doConnect(wallet){
   document.getElementById('walletChip').classList.add('show');
   document.getElementById('topSub').textContent='4 of your positions loaded, read-only. Micro Basilisk is online.';
   toast('Wallet connected', wallet+' · '+USER_ADDR_SHORT);
+  renderPositions();renderActivity();
   const g=document.getElementById('greet');
   if(g) g.querySelector('p').innerHTML='Your positions are loaded: <b>1.00 sBTC</b> idle, a <b>$68,294 HODLMM LP</b>, a <b>$34,100 Hermetica vault</b>, and PoX stacking. Pick a task below or type your own. Try the red chip to watch a gate block an action.';
 }
@@ -371,6 +439,7 @@ function disconnect(){
   document.getElementById('walletBtn').classList.remove('hide');
   document.getElementById('walletChip').classList.remove('show');
   document.getElementById('topSub').textContent='Connect your wallet to give Micro Basilisk read access to your positions';
+  renderPositions();
 }
 
 function quick(text){document.getElementById('input').value=text;submitTask();}
@@ -481,6 +550,11 @@ function runTurn(s,fallback){
         act.innerHTML='<span class="approve info">Read-only result, no transaction needed</span><span class="act-note">Read-only skill. Nothing to sign.</span>';
         body.appendChild(act);
       }
+      const lastQ=document.querySelectorAll('.msg-user');
+      const qText=lastQ.length?lastQ[lastQ.length-1].textContent:'(request)';
+      if(s.action==='blocked') logActivity(qText,s.skill,'blocked','no transaction built');
+      else if(s.action==='tx') logActivity(qText,s.skill,'pending','unsigned tx ready');
+      else logActivity(qText,s.skill,'readonly','nothing to sign');
       requestAnimationFrame(()=>act.classList.add('show'));scrollDown();
       busy=false;document.getElementById('sendBtn').disabled=false;
     },total);
@@ -493,8 +567,113 @@ function approve(id,s){
   setTimeout(()=>{
     const tx='0x'+Math.random().toString(16).slice(2,10)+'…'+Math.random().toString(16).slice(2,6);
     btn.className='approve done';btn.textContent='✓ '+s.verdict.type+' signed by you · '+tx;
+    const rec=ACTIVITY.find(a=>a.skill===s.skill&&a.status==='pending');
+    if(rec){rec.status='signed';rec.meta=tx;}
     toast(s.verdict.type+' submitted',tx+' (simulated)');
   },1400);
+}
+
+
+// ---------------- PORTFOLIO, IDENTITY, ACTIVITY ----------------
+// Demo data standing in for live Hiro reads against the CONNECTED USER's address.
+const USER_BNS = null;              // no .btc name yet, drives the identity nudge
+const ASSETS = [
+  {sym:'sBTC', name:'sBTC', sub:'idle in wallet',            usd:7156,  qty:'1.00 sBTC',    apy:null,   col:'var(--btc)'},
+  {sym:'LP',   name:'HODLMM sBTC/USDCx', sub:'bin 8091, drifted', usd:68294, qty:'LP position', apy:'11.40%', col:'var(--cy)'},
+  {sym:'USDh', name:'Hermetica vault',  sub:'sUSDh staked',   usd:34100, qty:'34,100 sUSDh', apy:'9.20%',  col:'var(--gr)'},
+  {sym:'STX',  name:'PoX stacking',     sub:'locked, cycle 98', usd:18900, qty:'6,300 STX',  apy:'8.10%',  col:'var(--pu)'}
+];
+const BNS_SUGGESTIONS = [
+  {name:'basilisk.btc', price:'0.0021 sBTC'},
+  {name:'yieldhunter.btc', price:'0.0008 sBTC'}
+];
+const ACTIVITY = [];
+
+function usd(n){return '$'+n.toLocaleString('en-US',{minimumFractionDigits:0,maximumFractionDigits:0});}
+
+function showView(v){
+  ['agent','positions','activity'].forEach(k=>{
+    document.getElementById('view-'+k).classList.toggle('on', k===v);
+    document.getElementById('nav-'+k).classList.toggle('on', k===v);
+  });
+  if(v==='positions') renderPositions();
+  if(v==='activity') renderActivity();
+}
+
+function renderPositions(){
+  const el=document.getElementById('positionsBody');
+  if(!connected){
+    el.innerHTML='<div class="empty"><div class="eic">🔒</div><div>Connect your wallet to see your assets.</div></div>';
+    return;
+  }
+  const total=ASSETS.reduce((a,b)=>a+b.usd,0);
+  const idle=ASSETS.filter(a=>!a.apy).reduce((a,b)=>a+b.usd,0);
+
+  let h='<div class="prof">'+
+    '<div class="pav">'+(USER_BNS?USER_BNS.slice(0,2).toUpperCase():'ST')+'</div>'+
+    '<div><div class="pn">'+(USER_BNS?USER_BNS:'Unnamed wallet')+
+      (USER_BNS?'<span class="bns-tag">BNS</span>':'<span class="bns-tag" style="color:var(--mut);border-color:var(--line);background:none">no .btc name</span>')+
+      '</div><div class="pa">'+USER_ADDR_SHORT+' · Stacks Testnet</div></div>'+
+    '<div class="ptot"><div class="n">'+usd(total)+'</div><div class="l">total managed</div></div></div>';
+
+  h+='<div class="sec-t">Your assets</div>';
+  ASSETS.forEach(a=>{
+    h+='<div class="asset"><div class="aic" style="background:'+a.col+'22;color:'+a.col+'">'+a.sym+'</div>'+
+       '<div><div class="anm">'+a.name+'</div><div class="asub">'+a.qty+' · '+a.sub+'</div></div>'+
+       '<div class="aright"><div class="aval">'+usd(a.usd)+'</div>'+
+       '<div class="aapy'+(a.apy?'':' idle')+'">'+(a.apy?a.apy+' APY':'earning nothing')+'</div></div></div>';
+  });
+
+  if(idle>0){
+    h+='<div class="nudge"><div class="nic">💡</div><div><div class="nt">You are holding <b>'+usd(idle)+'</b> that is earning nothing. '+
+       'Micro Basilisk can scan every venue and show you what it would earn, before you commit to anything.</div>'+
+       '<button class="nudge-act" onclick="fromPane(\'Route my idle sBTC to the best yield\')">Find the best yield →</button></div></div>';
+  }
+
+  if(!USER_BNS){
+    h+='<div class="sec-t">Identity</div>';
+    h+='<div class="nudge"><div class="nic">🏷️</div><div><div class="nt">This wallet has no <b>.btc</b> name. A BNS name is a readable on-chain identity that other agents and people can send to, and it is yours permanently. These are available now:</div>';
+    BNS_SUGGESTIONS.forEach(b=>{
+      h+='<div class="asset" style="margin-top:10px;margin-bottom:0"><div class="aic" style="background:rgba(247,147,26,.14);color:var(--btc)">.btc</div>'+
+         '<div><div class="anm">'+b.name+'</div><div class="asub">available to register</div></div>'+
+         '<div class="aright"><div class="aval">'+b.price+'</div><div class="aapy idle">registration</div></div></div>';
+    });
+    h+='<button class="nudge-act" onclick="fromPane(\'Register a .btc name for my wallet\')">Register a name →</button></div></div>';
+  }
+
+  h+='<div class="fee-note"><div class="fh">How SmartX is paid</div>'+
+     '<p><b>Free to ask.</b> Scans, position reads and any action a gate blocks cost you nothing. '+
+     '<b>You pay only when you sign</b> a transaction SmartX built, as a small fee settled over x402. '+
+     'If the gauntlet decides an action is not worth doing, SmartX earns nothing from telling you so, which is exactly the incentive we want. '+
+     'Other agents can also call these skills directly through a metered x402 endpoint.</p></div>';
+
+  el.innerHTML=h;
+}
+
+function fromPane(q){showView('agent');document.getElementById('input').value=q;submitTask();}
+
+function logActivity(question, skill, status, meta){
+  ACTIVITY.unshift({q:question, skill:skill, status:status, meta:meta||'', t:new Date()});
+}
+
+function renderActivity(){
+  const el=document.getElementById('activityBody');
+  if(!ACTIVITY.length){
+    el.innerHTML='<div class="empty"><div class="eic">📄</div><div>Nothing yet. Ask Micro Basilisk to do something and it will show up here.</div></div>';
+    return;
+  }
+  const map={signed:['signed','var(--gr)'],blocked:['blocked by gate','var(--rd)'],readonly:['read-only','var(--cy)'],pending:['awaiting signature','var(--ye)']};
+  let h='<div class="sec-t">Activity ('+ACTIVITY.length+')</div>';
+  ACTIVITY.forEach(a=>{
+    const m=map[a.status]||map.pending;
+    h+='<div class="act-row"><div class="adot" style="background:'+m[1]+'"></div>'+
+       '<div style="min-width:0"><div class="aq">'+a.q+'</div>'+
+       '<div class="am"><span>'+a.skill+'</span><span>'+a.t.toLocaleTimeString()+'</span>'+(a.meta?'<span>'+a.meta+'</span>':'')+'</div></div>'+
+       '<span class="st '+a.status+'">'+m[0]+'</span></div>';
+  });
+  h+='<div class="fee-note"><div class="fh">Billing</div><p>You were charged only for the actions marked <b>signed</b>. '+
+     'Questions, scans and blocked actions are free.</p></div>';
+  el.innerHTML=h;
 }
 
 function scrollDown(){const c=document.getElementById('convo');requestAnimationFrame(()=>c.scrollTop=c.scrollHeight);}
