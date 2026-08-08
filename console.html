@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>SmartX Console · testnet</title>
+<title>SmartX Console · Interactive preview</title>
 <meta name="description" content="Interactive preview of the SmartX agent console. Micro Basilisk selects a skill from the AIBTC registry, runs the safety gauntlet, and returns a plan you sign in your own wallet.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -243,7 +243,7 @@
 <body>
 
 <div class="preview-bar">
-  Live on Stacks testnet: your wallet, your signature, real transactions. The portfolio figures below are still preview data. <a href="index.html">Back to SmartX</a>
+  Interactive preview. Simulated data, no wallet connection, no live transactions. <a href="index.html">Back to SmartX</a>
 </div>
 
 <div class="app">
@@ -338,7 +338,7 @@
     <p>SmartX reads your positions so Micro Basilisk can work on them. It cannot move anything. Every transaction is signed by you, in your wallet.</p>
     <button class="cm-opt" onclick="doConnect('Leather')"><div class="wic" style="background:rgba(247,147,26,.14);color:var(--btc)">L</div><div><div class="wn">Leather</div><div class="wd">Bitcoin and Stacks</div></div><span class="arr">→</span></button>
     <button class="cm-opt" onclick="doConnect('Xverse')"><div class="wic" style="background:rgba(147,132,243,.14);color:var(--pu)">X</div><div><div class="wn">Xverse</div><div class="wd">Bitcoin, Stacks and Ordinals</div></div><span class="arr">→</span></button>
-    <div class="cm-note">Real connection, Stacks testnet. Set your extension to testnet first. SmartX receives your address and public key only, never a key.</div>
+    <div class="cm-note">Preview only. The wallet handshake is simulated and no real connection is made.</div>
     <button class="cm-opt" style="justify-content:center;margin-top:6px;border:0" onclick="closeConnect()"><span style="color:var(--mut)">Cancel</span></button>
   </div>
 </div>
@@ -569,7 +569,7 @@ function approve(id,s){
     btn.className='approve done';btn.textContent='✓ '+s.verdict.type+' signed by you · '+tx;
     const rec=ACTIVITY.find(a=>a.skill===s.skill&&a.status==='pending');
     if(rec){rec.status='signed';rec.meta=tx;}
-    toast(s.verdict.type+' submitted',tx+' (preview only)');
+    toast(s.verdict.type+' submitted',tx+' (simulated)');
   },1400);
 }
 
@@ -681,6 +681,5 @@ let toastTimer;
 function toast(t,s){document.getElementById('toastT').textContent=t;document.getElementById('toastS').textContent=s;const el=document.getElementById('toast');el.classList.add('show');clearTimeout(toastTimer);toastTimer=setTimeout(()=>el.classList.remove('show'),3200);}
 document.addEventListener('keydown',e=>{if(e.key==='Escape')closeConnect();});
 </script>
-<script type="module" src="./console-live.js"></script>
 </body>
 </html>
