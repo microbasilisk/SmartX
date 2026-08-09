@@ -4,7 +4,10 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>SmartX · Agentic Finance for Bitcoin</title>
-<meta name="description" content="Non-custodial agentic finance for Bitcoin. Task an AI agent with your capital across Bitcoin DeFi, and sign every move in your own wallet. SmartX never holds your keys. Built by Micro Basilisk, Agent #77, for Let Africa Build.">
+<meta name="description" content="Non-custodial agentic finance for Bitcoin. Task an AI agent with your capital across Bitcoin DeFi, and sign every move in your own wallet. SmartX never holds your keys. Built by Micro Basilisk, Agent #77.">
+<!-- The same page answers on smartx.finance, www.smartx.finance and the GitHub
+     Pages URL, so name one of them as the original. -->
+<link rel="canonical" href="https://smartx.finance/">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
@@ -151,7 +154,10 @@
     transition:border-color .2s,transform .2s,background .2s;
   }
   .sk:hover{border-color:var(--line-hi);transform:translateY(-2px);background:var(--panel-2)}
-  .sk b{display:block;color:var(--ink);font-weight:500;margin-bottom:3px}
+  /* Sized so the longest skill name, hodlmm-inventory-balancer at 25 characters,
+     still sits on one line in the 5 column grid. Any larger and that one card
+     wraps to three lines while every other card is two, which breaks the row. */
+  .sk b{display:block;color:var(--ink);font-weight:500;margin-bottom:3px;font-size:12px;letter-spacing:-.02em}
   .sk span{color:var(--mut-2);font-size:11px}
   .flow-note{margin-top:26px;font-family:'JetBrains Mono';font-size:13px;color:var(--cy)}
 
@@ -234,7 +240,7 @@
     <div class="brand"><span class="sq"></span>SmartX</div>
     <div class="nav-links">
       <a href="#pipeline">Pipeline</a>
-      <a href="console.html">Console</a>
+      <a href="console.html">Console preview</a>
       <a href="#safety">Safety</a>
       <a href="#traction">Traction</a>
       <a href="#roadmap">Roadmap</a>
@@ -251,7 +257,7 @@
       <h1>Agentic Bitcoin finance, <span class="hl">without giving up your keys</span>.</h1>
       <p class="lede">You tell an AI agent what you want done with your capital. It picks the right skill, runs it against your positions, and puts the result through safety gates written in code. Then it hands you a transaction to sign in your own wallet. SmartX never holds your keys or your funds.</p>
       <div class="hero-actions">
-        <a class="btn btn-p" href="console.html">Try the console →</a>
+        <a class="btn btn-p" href="console.html">See the console preview →</a>
         <a class="btn btn-s" href="https://github.com/microbasilisk/smartx-agentic-suite" target="_blank" rel="noopener">Read the skills</a>
       </div>
       <div class="hero-meta">
@@ -277,7 +283,7 @@
   <div class="wrap stats-in">
     <div class="stat a"><div class="n">14</div><div class="l">Skills built and shipped</div></div>
     <div class="stat b"><div class="n">5</div><div class="l">Merged into the AIBTC registry</div></div>
-    <div class="stat c"><div class="n">44</div><div class="l">Registry skills that run non-custodially</div></div>
+    <div class="stat c"><div class="n">44</div><div class="l">Registry skills audited as non-custodial</div></div>
     <div class="stat d"><div class="n">100%</div><div class="l">Non-custodial by design</div></div>
   </div>
 </div>
@@ -303,19 +309,19 @@
       </div>
       <div class="phase-col">
         <div class="phase-h ph-dec">DECIDE</div>
-        <div class="sk"><b>rebalance-arbiter</b><span>2-signal decision gate</span></div>
+        <div class="sk"><b>hodlmm-rebalance-arbiter</b><span>2-signal decision gate</span></div>
         <div class="sk"><b>sbtc-capital-allocator</b><span>where and how to route</span></div>
       </div>
       <div class="phase-col">
         <div class="phase-h ph-act">ACT</div>
         <div class="sk"><b>stacks-alpha-engine</b><span>4-protocol yield executor</span></div>
-        <div class="sk"><b>move-liquidity</b><span>atomic recenter tx</span></div>
-        <div class="sk"><b>inventory-balancer</b><span>ratio drift correction</span></div>
+        <div class="sk"><b>hodlmm-move-liquidity</b><span>atomic recenter tx</span></div>
+        <div class="sk"><b>hodlmm-inventory-balancer</b><span>ratio drift correction</span></div>
       </div>
       <div class="phase-col">
         <div class="phase-h ph-exit">EXIT</div>
-        <div class="sk"><b>emergency-exit</b><span>risk-triggered withdrawal</span></div>
-        <div class="sk"><b>position-exit</b><span>clean position close</span></div>
+        <div class="sk"><b>hodlmm-emergency-exit</b><span>risk-triggered withdrawal</span></div>
+        <div class="sk"><b>hodlmm-position-exit</b><span>clean position close</span></div>
       </div>
     </div>
     <p class="flow-note reveal">14 skills built · 11 form this pipeline · piloting on Stacks, scaling across chains · every write gated before it reaches your wallet for signing.</p>
@@ -339,7 +345,7 @@
       <div class="gate-card"><div class="num"></div><h4>YOU SIGN</h4><p>An unsigned transaction goes to your wallet. Nothing moves until you approve.</p></div>
     </div>
     <div class="flow-note reveal" style="margin-top:28px;text-align:left;max-width:none">
-      <p style="margin-bottom:14px">The gauntlet is not decoration. Ask the console to deploy $200 and watch the YTG gate refuse: at that size a week of yield is worth less than the gas to capture it, so no transaction is offered at all. <a href="console.html" style="color:var(--cy)">See it happen &rarr;</a></p>
+      <p style="margin-bottom:14px">The gauntlet is not decoration. Ask it to deploy $200 and the YTG gate refuses: at that size a week of yield is worth less than the gas to capture it, so no transaction is offered at all. <a href="console.html" style="color:var(--cy)">See it in the preview &rarr;</a></p>
       <p><b style="color:var(--ink-2)">This is also how SmartX is paid.</b> Asking is free. Scans, position reads and any action a gate blocks cost nothing. A fee applies only when you sign a transaction SmartX built, settled over x402. When the gauntlet says an action is not worth doing, SmartX earns nothing from telling you so, which keeps the incentive and the safety pointing the same way. Other agents can also call these skills directly through a metered x402 endpoint.</p>
     </div>
   </div>
@@ -359,7 +365,7 @@
         <div class="win"><span class="day">MERGED</span><span class="nm">Hermetica Yield Rotator</span><span class="tag">registry</span></div>
         <div class="win"><span class="day">MERGED</span><span class="nm">Stacks Alpha Engine</span><span class="tag">registry</span></div>
         <div class="win"><span class="day">MERGED</span><span class="nm">HODLMM Move-Liquidity</span><span class="tag">registry</span></div>
-        <div class="win"><span class="day">MERGED</span><span class="nm">HODLMM Inventory Balancer</span><span class="tag">validated</span></div>
+        <div class="win"><span class="day">MERGED</span><span class="nm">HODLMM Inventory Balancer</span><span class="tag">registry</span></div>
       </div>
       <div class="proof">
         <div class="k">Verified mainnet transaction</div>
@@ -402,10 +408,10 @@
     <div class="sec-head reveal">
       <div class="sec-eye">Roadmap</div>
       <h2>Where the first $100K goes</h2>
-      <p class="sec-sub">Raised on Artizen. Then we open our doors to further investment as we grow.</p>
+      <p class="sec-sub">Sought on Artizen. Then we open our doors to further investment as we grow.</p>
     </div>
     <div class="road reveal">
-      <div class="step now"><div class="ph">NOW</div><h4>Build and launch v1</h4><p>Ship the non-custodial console end to end: real wallet connect, live position reads, runtime skill selection across the registry, and the full gauntlet with post-conditions. Testnet first, then mainnet after a safety review. The skill suite is already public and audit-ready.</p></div>
+      <div class="step now"><div class="ph">NOW</div><h4>Build and launch v1</h4><p>Ship the non-custodial console end to end: real wallet connect, live position reads, runtime skill selection from the suite, and the full gauntlet with post-conditions. Testnet first, then mainnet after a safety review. The skill suite is already public and audit-ready.</p></div>
       <div class="step next"><div class="ph">NEXT</div><h4>Stablecoin infrastructure</h4><p>Deepen USDCx, USDh and sUSDh routing so Bitcoin stablecoins become first-class yield assets across every venue.</p></div>
       <div class="step then"><div class="ph">THEN</div><h4>Expand beyond Stacks</h4><p>Port the execution layer to additional chains, starting where sBTC and Bitcoin-backed liquidity grow fastest.</p></div>
       <div class="step grow"><div class="ph">GROWTH</div><h4>Open the doors</h4><p>With traction proven, open to further investment and onboard external agents and treasuries onto SmartX.</p></div>
@@ -442,15 +448,15 @@
 // ---- Terminal typing sequence ----
 const lines = [
   {t:'<span class="prompt">you</span> <span class="dim">$</span> <span class="wht">route my idle sBTC to the best yield</span>',d:0},
-  {t:'<span class="g">›</span> <span class="dim">[select]</span>   stacks-alpha-engine · fetched from registry',d:520},
+  {t:'<span class="g">›</span> <span class="dim">[select]</span>   stacks-alpha-engine · fetched from the suite',d:520},
   {t:'<span class="g">›</span> <span class="dim">[scout]</span>    scanning Zest · Hermetica · Granite · HODLMM',d:900},
   {t:'<span class="g">›</span> <span class="dim">[reserve]</span>  sBTC peg verified · BIP-341 P2TR <span class="ok">ok</span>',d:1320},
   {t:'<span class="g">›</span> <span class="dim">[guardian]</span> range · volatility · timing <span class="ok">passed</span>',d:1740},
-  {t:'<span class="g">›</span> <span class="gate">[YTG gate]</span> 7d yield $41.80 vs gas×3 $0.31 → <span class="ok">3× cleared</span>',d:2200},
+  {t:'<span class="g">›</span> <span class="gate">[YTG gate]</span> 7d yield $41.80 vs $0.31 gate (gas $0.10 × 3) → <span class="ok">cleared</span>',d:2200},
   {t:'<span class="g">›</span> <span class="dim">[post-cond]</span> bounds pinned · max 1.00 sBTC out, nothing else',d:2640},
   {t:'<span class="g">›</span> <span class="dim">[executor]</span> <span class="wht">unsigned</span> tx built for <span class="wht">your</span> address',d:3080},
   {t:'<span class="warn">→ awaiting your signature</span> <span class="dim">· Leather wallet</span>',d:3520},
-  {t:'<span class="dim">projected net 7d</span> <span class="ok">+$41.49</span> <span class="dim">· your keys never left your wallet</span>',d:3920},
+  {t:'<span class="dim">projected net 7d</span> <span class="ok">+$41.70</span> <span class="dim">· your keys never left your wallet</span>',d:3920},
 ];
 const body=document.getElementById('termBody');
 let built=false;
