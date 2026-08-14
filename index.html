@@ -339,13 +339,13 @@
     <div class="gates reveal">
       <div class="gate-card"><div class="num"></div><h4>SCOUT</h4><p>Scan live APY, TVL and your positions across every venue.</p><span class="gate-arrow">→</span></div>
       <div class="gate-card"><div class="num"></div><h4>RESERVE</h4><p>Verify sBTC peg health via BIP-341 P2TR derivation.</p><span class="gate-arrow">→</span></div>
-      <div class="gate-card"><div class="num"></div><h4>GUARDIAN</h4><p>Check market safety gates: range, volatility, timing.</p><span class="gate-arrow">→</span></div>
+      <div class="gate-card"><div class="num"></div><h4>GUARDIAN</h4><p>Check market safety gates: slippage, 24h volume, gas and cooldown.</p><span class="gate-arrow">→</span></div>
       <div class="gate-card"><div class="num"></div><h4>YTG GATE</h4><p>7-day projected yield must exceed gas cost times three.</p><span class="gate-arrow">→</span></div>
       <div class="gate-card"><div class="num"></div><h4>POST-CONDITIONS</h4><p>Bind what the transaction may move. The chain rejects the rest.</p><span class="gate-arrow">→</span></div>
       <div class="gate-card"><div class="num"></div><h4>YOU SIGN</h4><p>An unsigned transaction goes to your wallet. Nothing moves until you approve.</p></div>
     </div>
     <div class="flow-note reveal" style="margin-top:28px;text-align:left;max-width:none">
-      <p style="margin-bottom:14px">The gauntlet is not decoration. Ask it to deploy $200 and the YTG gate refuses: at that size a week of yield is worth less than the gas to capture it, so no transaction is offered at all. <a href="console.html" style="color:var(--cy)">See it in the preview &rarr;</a></p>
+      <p style="margin-bottom:14px">The gauntlet is not decoration. Point it at a pool that pays well but nobody trades, and the guardian gate refuses before a transaction is ever built. The rule is a $10,000 floor on 24-hour volume, because a yield you cannot exit at is not a yield. Checked on 2026-08-14, that one gate refused 9 of the 14 HODLMM pools, including one paying 7.75% on $95,290 of liquidity that saw $5,932 of trade in a day.</p>
       <p><b style="color:var(--ink-2)">This is also how SmartX is paid.</b> Asking is free. Scans, position reads and any action a gate blocks cost nothing. A fee applies only when you sign a transaction SmartX built, settled over x402. When the gauntlet says an action is not worth doing, SmartX earns nothing from telling you so, which keeps the incentive and the safety pointing the same way. Other agents can also call these skills directly through a metered x402 endpoint.</p>
     </div>
   </div>
@@ -451,12 +451,12 @@ const lines = [
   {t:'<span class="g">›</span> <span class="dim">[select]</span>   stacks-alpha-engine · fetched from the suite',d:520},
   {t:'<span class="g">›</span> <span class="dim">[scout]</span>    scanning Zest · Hermetica · Granite · HODLMM',d:900},
   {t:'<span class="g">›</span> <span class="dim">[reserve]</span>  sBTC peg verified · BIP-341 P2TR <span class="ok">ok</span>',d:1320},
-  {t:'<span class="g">›</span> <span class="dim">[guardian]</span> range · volatility · timing <span class="ok">passed</span>',d:1740},
-  {t:'<span class="g">›</span> <span class="gate">[YTG gate]</span> 7d yield $41.80 vs $0.31 gate (gas $0.10 × 3) → <span class="ok">cleared</span>',d:2200},
+  {t:'<span class="g">›</span> <span class="dim">[guardian]</span> slippage · 24h volume · cooldown <span class="ok">passed</span>',d:1740},
+  {t:'<span class="g">›</span> <span class="gate">[YTG gate]</span> 7d yield $41.80 vs $0.011 gate (gas $0.0036 x 3) → <span class="ok">cleared</span>',d:2200},
   {t:'<span class="g">›</span> <span class="dim">[post-cond]</span> bounds pinned · max 1.00 sBTC out, nothing else',d:2640},
   {t:'<span class="g">›</span> <span class="dim">[executor]</span> <span class="wht">unsigned</span> tx built for <span class="wht">your</span> address',d:3080},
   {t:'<span class="warn">→ awaiting your signature</span> <span class="dim">· Leather wallet</span>',d:3520},
-  {t:'<span class="dim">projected net 7d</span> <span class="ok">+$41.70</span> <span class="dim">· your keys never left your wallet</span>',d:3920},
+  {t:'<span class="dim">projected net 7d</span> <span class="ok">+$41.79</span> <span class="dim">· your keys never left your wallet</span>',d:3920},
 ];
 const body=document.getElementById('termBody');
 let built=false;

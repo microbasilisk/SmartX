@@ -309,7 +309,7 @@
           <button class="chip" onclick="quick('Rotate my stablecoin yield')">Rotate stablecoin yield</button>
           <button class="chip" onclick="quick('Is my HODLMM position drifting?')">Check my HODLMM position</button>
           <button class="chip" onclick="quick('Scan my whole portfolio')">Scan my portfolio</button>
-          <button class="chip warn" onclick="quick('Deploy my $200 USDCx into the best yield')">Deploy $200 USDCx (see a gate block)</button>
+          <button class="chip warn" onclick="quick('Put my USDCx into the highest APY pool')">Chase the top APY (see a gate block)</button>
         </div>
         <div class="inbar">
           <input id="input" placeholder="Task Micro Basilisk, for example: move my idle USDCx into the best yield" onkeydown="if(event.key==='Enter')submitTask()">
@@ -406,15 +406,15 @@ const CATALOG=[
     action:'info'
   },
   {
-    match:['200','small','tiny','little','dust'],
+    match:['apy','highest','thin','quiet','illiquid','volume','liquidity'],
     skill:'usdcx-yield-optimizer', src:'microbasilisk/smartx-agentic-suite', reg:'defi · write · requires-funds',
-    say:'Looking for the best home for $200 of USDCx. Fetching <b>usdcx-yield-optimizer</b>.',
-    scan:[['HODLMM sBTC/USDCx','11.40%',true],['Bitflow XYK USDCx','8.90%',false],['Granite USDh','7.10%',false]],
-    gates:[['SCOUT','3 venues scanned','pass'],['RESERVE','your USDCx balance confirmed at $200','pass'],['GUARDIAN','volatility gates clear','pass'],['YTG GATE','7d gain $0.44 does NOT clear gas x3 of $1.44','fail'],['POST-CONDITIONS','not reached','skip'],['EXECUTOR','not reached, no transaction built','skip']],
+    say:'Looking for the best yield on your USDCx. Fetching <b>usdcx-yield-optimizer</b>.',
+    scan:[['HODLMM pool 11','7.75%',true],['Bitflow XYK USDCx','8.90%',false],['Granite USDh','7.10%',false]],
+    gates:[['SCOUT','3 venues scanned','pass'],['RESERVE','your USDCx balance confirmed','pass'],['GUARDIAN','24h volume $5,932 is below the $10,000 floor','fail'],['YTG GATE','not reached','skip'],['POST-CONDITIONS','not reached','skip'],['EXECUTOR','not reached, no transaction built','skip']],
     verdict:{type:'BLOCKED',color:'var(--rd)',from:'',to:'',
-      rows:[['Position size','$200.00'],['Best APY found','11.40%'],['Projected 7-day gain','+$0.44'],['Round trip gas','$0.48'],['Gas x3 threshold','$1.44'],['Net result if executed','-$0.04','neg'],['Gate that blocked','YTG GATE']]},
+      rows:[['Best APY found','7.75%'],['Pool liquidity','$95,290'],['24h volume','$5,932','neg'],['Required minimum','$10,000'],['Pools failing this check','9 of 14'],['Gate that blocked','GUARDIAN']]},
     action:'blocked',
-    blockedWhy:'The best venue would earn you about 44 cents over a week against 48 cents of round trip gas, so acting loses money outright. The gate is stricter than that: it wants a week of yield to clear three times the gas, which here is $1.44. No transaction is offered. Come back with a larger position, or wait for gas to fall.'
+    blockedWhy:'That pool pays the best rate on the list, and almost nobody trades in it. Against $95,290 of liquidity only $5,932 changed hands in a day, under the $10,000 floor the skill requires. A yield you cannot exit at is not a yield: entering a pool this quiet means accepting whatever price is available when you want out. No transaction is offered. Figures read from the Bitflow API on 2026-08-14, when 9 of the 14 HODLMM pools failed this same check.'
   }
 ];
 const FALLBACK_SAY="I do not have an exact skill cached for that, so I searched the suite for the closest vetted match. Here is what fits best. ";
