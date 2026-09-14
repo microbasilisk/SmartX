@@ -392,6 +392,10 @@
      chips are in the "Try it here" section. */
   @media (max-width: 1079px) {
     .dock-chips { display: none; }
+    .dock { flex-wrap: nowrap; gap: 12px; padding: 10px 10px 10px 14px; border-radius: 18px; }
+    .dock .kbd { display: none; }
+    .dock-ruling { flex: 1; min-width: 0; font-size: 13px; line-height: 1.25; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+    .dock-open { flex-shrink: 0; margin-left: 0; padding: 0 14px; font-size: 13px; }
   }
   @media (min-width: 760px) {
     .h1 { font-size: 66px; }
@@ -521,7 +525,7 @@
               <div class="tool"><i></i></div>
             </div>
             <div class="screen" id="heroScreens">
-              <img class="on" src="screens/console.webp" width="1600" height="1000" alt="The console with the map and the ask box" fetchpriority="high">
+              <img class="on" src="screens/map.webp" width="1600" height="1000" alt="The map after the portfolio question: your tokens on the left, the places they could go on the right, one route lit" fetchpriority="high">
               <img src="screens/library.webp" width="1600" height="1000" alt="The skills library, grouped by the stage capital moves through">
               <img src="screens/refusal.webp" width="1600" height="1000" alt="The refusal card, offering skills to ask instead" style="object-position:58% top;">
             </div>
@@ -605,7 +609,7 @@
           <div class="phone">
             <div class="phone-scroll">
               <img src="screens/phone-library.webp" width="640" height="1385" alt="The skills library on a phone, grouped by stage" loading="lazy">
-              <img src="screens/phone-console.webp" width="640" height="1385" alt="The console on a phone" loading="lazy">
+              <img src="screens/phone-map.webp" width="640" height="1385" alt="The map on a phone, swiped across to the places your tokens could go" loading="lazy">
             </div>
             <div class="status" aria-hidden="true"><span>9:41</span><i></i></div>
             <div class="island" aria-hidden="true"></div>
@@ -931,7 +935,7 @@
 
   /* The deck: six real screens in a fan. */
   var DECK = [
-    { src: "screens/console.webp", alt: "The console with the map, the wallet rail and the ask box", cap: "The console. Your tokens on the left, where they could go on the right." },
+    { src: "screens/map.webp", alt: "The map with its routes drawn from your tokens to the places they could go", cap: "The console. Your tokens on the left, where they could go on the right." },
     { src: "screens/home.webp", alt: "The SmartX home screen, before a wallet is connected", cap: "The home screen, before any wallet is connected." },
     { src: "screens/refusal.webp", alt: "The refusal card, offering five skills to ask instead", cap: "A refusal is an answer. Same slot, same size, with what to ask instead." },
     { src: "screens/library.webp", alt: "The skills library grouped by the stage capital moves through", cap: "11 of 56 skills, grouped by the stage your capital moves through." },
