@@ -112,6 +112,22 @@
   /* The opening section is the social card, at page size: headline, then the proof along the bottom. */
   .og { position: relative; display: flex; flex-direction: column; gap: 40px; padding-top: 40px; padding-bottom: 34px; }
   .og-main { margin-top: auto; }
+  /* The hero's phone sits beside the words only on wide screens; narrower screens keep the words
+     alone, and the phone band further down shows the same screens. */
+  .og-top { margin-top: auto; }
+  .og-top .og-main { margin-top: 0; }
+  .hero-phone { display: none; }
+  /* A hand holding the phone, drawn in two layers: the palm and sleeve behind the phone, the
+     thumb and fingertips in front of it. The whole hold sways gently; reduced motion stops it. */
+  .hand-stage { position: relative; width: 320px; height: 720px; transform-origin: 50% 90%; animation: w-hold 7s ease-in-out infinite; }
+  .hand-glow { position: absolute; inset: 40px 0 120px; background: radial-gradient(ellipse at center, rgba(107,63,196,.40), transparent 66%); filter: blur(46px); }
+  .hand { position: absolute; left: 0; top: 0; width: 320px; height: 720px; display: block; }
+  .hand-front { z-index: 4; pointer-events: none; }
+  .hand-stage .hand-phone { position: absolute; left: 40px; top: 0; width: 240px; z-index: 2; }
+  .hand-stage .hand-phone .phone-scroll { animation-duration: 26s; }
+  .tap { position: absolute; left: 36%; top: 58%; width: 26px; height: 26px; border-radius: 50%; background: rgba(201,166,255,.55); z-index: 3; animation: w-tap 4.2s ease-out infinite; }
+  @keyframes w-hold { 0%,100% { transform: translateY(0) rotate(-2deg); } 50% { transform: translateY(-12px) rotate(1.5deg); } }
+  @keyframes w-tap { 0%,70% { transform: scale(.4); opacity: 0; } 76% { transform: scale(1); opacity: .9; } 100% { transform: scale(2.2); opacity: 0; } }
   .og-btns { display: flex; gap: 13px; flex-wrap: wrap; margin-top: 30px; }
   .og-stats { margin: auto 0 0; border-top: 1px solid rgba(20,16,31,.16); display: grid; grid-template-columns: minmax(0,1fr); }
   .og-stats div { display: grid; grid-template-columns: auto minmax(0,1fr); gap: 14px; align-items: baseline; padding: 14px 0; border-bottom: 1px solid rgba(20,16,31,.1); }
@@ -416,6 +432,8 @@
     .cta-band { padding-bottom: 140px; }
   }
   @media (min-width: 1080px) {
+    .og-top { display: grid; grid-template-columns: minmax(0,1fr) 320px; gap: 48px; align-items: center; }
+    .hero-phone { display: flex; justify-content: center; }
     .h1 { font-size: 96px; }
     .lede { font-size: 24px; }
     .og-stats dt { font-size: 36px; }
@@ -472,15 +490,54 @@
   </div>
 
   <div class="og wrap">
+    <div class="og-top">
     <div class="og-main">
       <span class="eyebrow"><i aria-hidden="true"></i>Live on Stacks, Bitcoin's DeFi layer · more chains next</span>
-      <h1 class="h1">Your crypto, put to work. <em>Just ask.</em></h1>
-      <p class="lede">SmartX is an AI assistant for your wallet. Ask in plain words where your coins can earn. It finds the options, explains the risks, and prepares the transaction. You approve it in your own wallet. SmartX never holds your keys or your money.</p>
+      <h1 class="h1">Put your crypto<br>to work. <em>Just ask.</em></h1>
+      <p class="lede" style="max-width:44ch;">An AI assistant that finds where your coins can earn and prepares the move. You approve every step in your own wallet.</p>
       <div class="og-btns">
         <a class="btn-big primary" href="https://app.smartx.finance/console.html?demo=1">Try the demo</a>
         <a class="btn-big ghost" href="https://app.smartx.finance/console.html">Open the app</a>
       </div>
       <p class="hero-note">The demo needs no wallet and no password. The app itself is password protected for now.</p>
+    </div>
+    <div class="hero-phone" aria-hidden="true">
+      <div class="hand-stage">
+        <div class="hand-glow"></div>
+        <svg class="hand hand-back" viewBox="0 0 320 720" width="320" height="720">
+          <path d="M78 720 L104 596 L236 596 L262 720 Z" fill="#5B3E8C"/>
+          <path d="M92 612 L228 612 L232 628 L88 628 Z" fill="#4A3175"/>
+          <path d="M70 606 C 46 548, 38 480, 52 432 C 62 398, 94 384, 132 386 L 246 392 C 284 398, 300 430, 296 478 C 292 540, 272 588, 246 610 C 206 636, 116 640, 70 606 Z" fill="#965F3A"/>
+        </svg>
+        <div class="phone hand-phone">
+          <div class="phone-scroll">
+            <img src="screens/phone-map.webp" width="640" height="1385" alt="" fetchpriority="high">
+            <img src="screens/phone-library.webp" width="640" height="1385" alt="" loading="lazy">
+          </div>
+          <div class="status"><span>9:41</span><i></i></div>
+          <div class="island"></div>
+          <div class="homebar"></div>
+          <span class="tap"></span>
+        </div>
+        <svg class="hand hand-front" viewBox="0 0 320 720" width="320" height="720">
+          <g fill="#9C6440">
+            <rect x="262" y="330" width="46" height="34" rx="17"/>
+            <rect x="264" y="372" width="48" height="34" rx="17"/>
+            <rect x="262" y="414" width="46" height="34" rx="17"/>
+            <rect x="258" y="456" width="42" height="32" rx="16"/>
+          </g>
+          <g fill="#B98260" opacity=".55">
+            <rect x="290" y="336" width="12" height="20" rx="6"/>
+            <rect x="294" y="378" width="12" height="20" rx="6"/>
+            <rect x="290" y="420" width="12" height="20" rx="6"/>
+            <rect x="284" y="461" width="11" height="19" rx="5.5"/>
+          </g>
+          <path d="M24 540 C 18 486, 34 444, 64 416 C 80 402, 100 408, 98 428 C 96 450, 76 472, 72 510 C 68 544, 42 562, 24 540 Z" fill="#9C6440"/>
+          <ellipse cx="86" cy="421" rx="8" ry="11" transform="rotate(35 86 421)" fill="#B98260" opacity=".6"/>
+        </svg>
+      </div>
+    </div>
+    </div>
     </div>
     <dl class="og-stats">
       <div><dt style="color:#5B3E8C;">11</dt><dd>tools SmartX can use for you today</dd></div>
@@ -551,6 +608,20 @@
   </div>
 </section>
 <section class="band-top">
+  <div class="wrap" data-rise>
+    <div class="head-row">
+      <h2 class="label">How it works</h2>
+      <span class="aside">SmartX suggests. You decide. Your wallet signs.</span>
+    </div>
+    <div class="moves">
+      <div class="move" style="--c:#5B3E8C;"><div class="move-n">01</div><b>You ask</b><p>In plain words, like "where can my USDCx earn?". You never pick a tool, and nothing is approved in advance.</p></div>
+      <div class="move" style="--c:#1F7FBF;"><div class="move-n">02</div><b>It checks</b><p>SmartX reads live data, compares the options, and tells you what it found, including when the answer is no.</p></div>
+      <div class="move" style="--c:#0E7A57;"><div class="move-n">03</div><b>You approve</b><p>In your own wallet. SmartX never holds your keys. On Stacks the limits you see are enforced by the chain itself.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="band-top">
   <div class="wrap split" data-rise>
     <div>
       <span class="label">Why SmartX</span>
@@ -562,20 +633,6 @@
       <li class="row"><span class="row-k">Understand</span><span class="row-t">What each option earns, what it risks, and when SmartX says no, why</span><span class="row-tag">plain words</span></li>
       <li class="row"><span class="row-k">Approve</span><span class="row-t">One transaction at a time, with its limits spelled out before you sign</span><span class="row-tag">your wallet</span></li>
     </ul>
-  </div>
-</section>
-
-<section class="band-top">
-  <div class="wrap" data-rise>
-    <div class="head-row">
-      <h2 class="label">How it works</h2>
-      <span class="aside">SmartX suggests. You decide. Your wallet signs.</span>
-    </div>
-    <div class="moves">
-      <div class="move" style="--c:#5B3E8C;"><div class="move-n">01</div><b>You ask</b><p>In plain words, like "where can my USDCx earn?". You never pick a tool, and nothing is approved in advance.</p></div>
-      <div class="move" style="--c:#1F7FBF;"><div class="move-n">02</div><b>It checks</b><p>SmartX reads live data, compares the options, and tells you what it found, including when the answer is no.</p></div>
-      <div class="move" style="--c:#0E7A57;"><div class="move-n">03</div><b>You approve</b><p>In your own wallet. SmartX never holds your keys. On Stacks the limits you see are enforced by the chain itself.</p></div>
-    </div>
   </div>
 </section>
 
