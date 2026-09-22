@@ -13,9 +13,9 @@ This draws the mark from coordinates rather than shrinking an image, so every si
 instead of blurry. It writes the SVG that modern browsers prefer, the PNG sizes older ones want,
 and the .ico that Windows and some crawlers still ask for.
 
-Run it with `python3 tools/make-favicon.py`. It needs nothing installed: no ImageMagick, no
-Pillow. That is deliberate, because this machine has neither and its cached browser cannot start
-for want of system libraries, so anything needing a rasteriser could not be rebuilt here.
+Run it with `python3 tools/make-favicon.py`. It uses only the Python standard library, so it runs
+anywhere without ImageMagick, Pillow or a headless browser. That is deliberate: a build step that
+needs tools a machine may not have is a build step that quietly stops being run.
 
 Colours are the ones already in the product, not new ones:
   #C9A6FF  the light lavender, already in web/console.html
@@ -70,7 +70,7 @@ def in_rounded_square(x: float, y: float) -> bool:
     return True
 
 
-def render(size: int, supersample: int = 4) -> bytes:
+def render(size: int, supersample: int = 4, square: bool = False) -> bytes:
     """RGBA pixels, anti-aliased by sampling each pixel several times and averaging."""
     rows = bytearray()
     step = GRID / (size * supersample)
@@ -83,7 +83,7 @@ def render(size: int, supersample: int = 4) -> bytes:
                 for sx in range(supersample):
                     x = (px * supersample + sx) * step + half
                     y = (py * supersample + sy) * step + half
-                    if not in_rounded_square(x, y):
+                    if not square and not in_rounded_square(x, y):
                         continue  # transparent outside the tile
                     col = INK if inside(x, y) else LAVENDER
                     r += col[0]; g += col[1]; b += col[2]; a += 255
@@ -96,14 +96,14 @@ def render(size: int, supersample: int = 4) -> bytes:
     return bytes(rows)
 
 
-def png(size: int) -> bytes:
+def png(size: int, square: bool = False) -> bytes:
     """A PNG, written by hand. zlib is in the standard library; nothing else is needed."""
     def chunk(kind: bytes, data: bytes) -> bytes:
         return (struct.pack(">I", len(data)) + kind + data
                 + struct.pack(">I", zlib.crc32(kind + data) & 0xFFFFFFFF))
     ihdr = struct.pack(">IIBBBBB", size, size, 8, 6, 0, 0, 0)  # 8 bit RGBA
     return (b"\x89PNG\r\n\x1a\n" + chunk(b"IHDR", ihdr)
-            + chunk(b"IDAT", zlib.compress(render(size), 9)) + chunk(b"IEND", b""))
+            + chunk(b"IDAT", zlib.compress(render(size, square=square), 9)) + chunk(b"IEND", b""))
 
 
 def ico(sizes: list[int]) -> bytes:
@@ -140,8 +140,13 @@ if __name__ == "__main__":
     assets.mkdir(exist_ok=True)
     (here / "favicon.svg").write_text(SVG)
     (here / "favicon.ico").write_bytes(ico([16, 32, 48]))
-    for s, name in ((16, "favicon-16.png"), (32, "favicon-32.png"),
-                    (180, "apple-touch-icon.png"), (192, "icon-192.png"), (512, "icon-512.png")):
-        (assets / name).write_bytes(png(s))
+    for s, name, square in ((16, "favicon-16.png", False), (32, "favicon-32.png", False),
+                            # Square and opaque on purpose: iOS paints the transparent part of a
+                            # home screen icon BLACK and applies its own mask, which bulges past a
+                            # round corner, so a rounded tile shows black slivers. Apple asks for a
+                            # square icon and does the rounding itself.
+                            (180, "apple-touch-icon.png", True),
+                            (192, "icon-192.png", False), (512, "icon-512.png", False)):
+        (assets / name).write_bytes(png(s, square=square))
         print(f"  wrote assets/{name}")
     print("  wrote favicon.svg and favicon.ico")
