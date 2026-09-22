@@ -36,8 +36,8 @@
     goes stale without anyone noticing, which is the same way the sitemap date went stale. Google
     usually wants `offers` before it shows a rich result for software, so this costs us that
     result. An accurate plain listing beats a rich wrong one.
-  - No `sameAs`. It would assert that a particular social profile is ours, and that is the owner's
-    to confirm, not mine to infer from a card tag.
+  `sameAs` names the X account. Left out at first because asserting a social profile is ours is a
+  claim, not an inference from a card tag. Confirmed by the owner on 22 September, so it is here.
 
   The console at app.smartx.finance gets none of this on purpose: it is noindex, so structured
   data there would describe a page no search engine should list.
@@ -57,7 +57,8 @@
         "width": 512,
         "height": 512
       },
-      "description": "SmartX is a non-custodial assistant for Stacks wallets on Bitcoin's DeFi layer. It never holds keys or funds."
+      "description": "SmartX is a non-custodial assistant for Stacks wallets on Bitcoin's DeFi layer. It never holds keys or funds.",
+      "sameAs": ["https://x.com/SmartXFinance"]
     },
     {
       "@type": "WebSite",
