@@ -21,6 +21,70 @@
 <meta name="twitter:title" content="SmartX Finance: an AI assistant for your crypto wallet that never holds your keys">
 <meta name="twitter:description" content="Ask in plain words where your crypto can earn. SmartX prepares the transaction; you approve it in your own wallet. Live on Stacks.">
 <meta name="twitter:image" content="https://smartx.finance/assets/og-card.png?v=2">
+<!--
+  Structured data, side fix 22 item 4, added 22 September. This is the only part of that fix that
+  is fairly called "SEO not built": there was no JSON-LD on either surface.
+
+  It is written carefully because it is a machine readable public claim. A wrong statement here
+  lands in a search index rather than on a page we can edit, so everything below is a fact that is
+  true today and unlikely to quietly stop being true.
+
+  Two things are deliberately LEFT OUT:
+
+  - No `offers` and no price. The page says "Today SmartX charges nothing" and, one line later,
+    "fee, planned". A price of zero is accurate this minute and is exactly the kind of fact that
+    goes stale without anyone noticing, which is the same way the sitemap date went stale. Google
+    usually wants `offers` before it shows a rich result for software, so this costs us that
+    result. An accurate plain listing beats a rich wrong one.
+  - No `sameAs`. It would assert that a particular social profile is ours, and that is the owner's
+    to confirm, not mine to infer from a card tag.
+
+  The console at app.smartx.finance gets none of this on purpose: it is noindex, so structured
+  data there would describe a page no search engine should list.
+-->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://smartx.finance/#organization",
+      "name": "SmartX Finance",
+      "url": "https://smartx.finance/",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://smartx.finance/assets/icon-512.png",
+        "width": 512,
+        "height": 512
+      },
+      "description": "SmartX is a non-custodial assistant for Stacks wallets on Bitcoin's DeFi layer. It never holds keys or funds."
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://smartx.finance/#website",
+      "url": "https://smartx.finance/",
+      "name": "SmartX Finance",
+      "publisher": { "@id": "https://smartx.finance/#organization" }
+    },
+    {
+      "@type": "SoftwareApplication",
+      "@id": "https://smartx.finance/#app",
+      "name": "SmartX",
+      "url": "https://smartx.finance/",
+      "applicationCategory": "FinanceApplication",
+      "operatingSystem": "Web browser",
+      "publisher": { "@id": "https://smartx.finance/#organization" },
+      "description": "Ask in plain words where your crypto can earn. SmartX reads your own Stacks wallet, explains the options, and prepares an unsigned transaction. You approve it in your own wallet. SmartX holds no keys and cannot sign.",
+      "featureList": [
+        "Reads a connected Stacks wallet and values what it holds",
+        "Compares yield options across Bitcoin DeFi protocols",
+        "Prepares unsigned transactions the person signs in their own wallet",
+        "Never holds keys or funds"
+      ]
+    }
+  ]
+}
+</script>
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <link rel="icon" href="/favicon.ico" sizes="any">
 <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32.png">
