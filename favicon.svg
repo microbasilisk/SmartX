@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 180 180" role="img" aria-label="SmartX">
+  <rect width="180" height="180" rx="40" fill="#C9A6FF"/>
+  <g fill="#120C1C">
+    <rect x="44" y="52" width="13" height="76"/>
+    <rect x="44" y="52" width="38" height="13"/>
+    <rect x="44" y="115" width="38" height="13"/>
+    <rect x="123" y="52" width="13" height="76"/>
+    <rect x="98" y="52" width="38" height="13"/>
+    <rect x="98" y="115" width="38" height="13"/>
+    <circle cx="90" cy="90" r="17"/>
+  </g>
+</svg>
